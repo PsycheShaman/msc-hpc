@@ -15,7 +15,7 @@ with open('/scratch/vljchr004/data/msc-thesis-data/y.pkl', 'rb') as y_file:
     
 from tensorflow.keras.utils import to_categorical
 
-y = to_categorical(y)
+#y = to_categorical(y)
 
 from sklearn.model_selection import train_test_split
 
@@ -31,10 +31,10 @@ from tensorflow.keras.layers import Dense, Dropout, Activation
 
 
 num_classes = 2
-epochs = 1000
+epochs = 100
 
-y_train = keras.utils.to_categorical(y_train, num_classes)
-y_test = keras.utils.to_categorical(y_test, num_classes)
+y_train = tensorflow.keras.utils.to_categorical(y_train, num_classes)
+y_test = tensorflow.keras.utils.to_categorical(y_test, num_classes)
     
 model1 = Sequential([
     Dense(256, input_shape=(24,)),
@@ -88,3 +88,4 @@ model1.probs = model1.predict_proba(x_test)
 
 import numpy as np
 np.savetxt("/home/vljchr004/msc-hpc/feedforward_python/results/feed_forward_2_results.csv", np.array(model1.probs), fmt="%s")
+np.savetxt("/home/vljchr004/msc-hpc/feedforward_python/results/feed_forward_2_y_test.csv", np.array(y_test), fmt="%s")
