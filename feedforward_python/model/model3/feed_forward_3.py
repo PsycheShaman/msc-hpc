@@ -64,7 +64,8 @@ history = model1.fit(x_train, y_train,
               #batch_size=batch_size,
               epochs=epochs,
               validation_split=0.15,
-              shuffle=True)
+              shuffle=True,
+              verbose=2)
 
 import matplotlib.pyplot as plt
 
