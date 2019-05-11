@@ -1,11 +1,8 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed May  1 11:37:05 2019
-
-@author: gerhard
-"""
+print("starting")
 
 import glob
+
+print("imported glob")
 
 files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/unprocessed" + '/**/*.txt', recursive=True)
 
@@ -14,8 +11,12 @@ a = list(range(1,len(files)-1))
 files_in_order = []
 for i in a:
     files_in_order.append(files[i])
+
+print("read files list")
     
 from ast import literal_eval
+
+print("imported literal_eval")
 
 d = {}
 
