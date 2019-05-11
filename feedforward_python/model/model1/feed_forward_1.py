@@ -27,7 +27,7 @@ from tensorflow.keras.layers import Dense, Dropout, Activation
 
 
 num_classes = 2
-epochs = 100
+epochs = 1000
 
 y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
