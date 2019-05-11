@@ -86,3 +86,6 @@ import numpy as np
 np.savetxt("/home/vljchr004/msc-hpc/feedforward_python/results/feed_forward_1_results.csv", np.array(model1.probs), fmt="%s")
 
 np.savetxt("/home/vljchr004/msc-hpc/feedforward_python/results/feed_forward_1_y_test.csv", np.array(y_test), fmt="%s")
+
+model1.save('/home/vljchr004/msc-hpc/feedforward_python/feed_forward1.h5')  # creates a HDF5 file 'my_model.h5'
+del model1 

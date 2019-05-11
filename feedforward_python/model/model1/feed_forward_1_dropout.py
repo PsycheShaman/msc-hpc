@@ -89,6 +89,8 @@ model1_dropout_0_5.probs = model1_dropout_0_5.predict_proba(x_test)
 import numpy as np
 np.savetxt("/home/vljchr004/msc-hpc/feedforward_python/results/feed_forward_1__dropout_0_5_results.csv", np.array(model1_dropout_0_5.probs), fmt="%s")
 
+model1_dropout_0_5.save('/home/vljchr004/msc-hpc/feedforward_python/feed_forward_1__dropout_0_5.h5')  # creates a HDF5 file 'my_model.h5'
+del model1_dropout_0_5 
 
 model1_dropout_0_8 = Sequential([
     Dense(256, input_shape=(24,)),
@@ -141,7 +143,10 @@ plt.savefig('/home/vljchr004/msc-hpc/feedforward_python/fig/feed_forward_1_dropo
 model1_dropout_0_8.probs = model1_dropout_0_8.predict_proba(x_test)
 
 import numpy as np
-np.savetxt("/home/vljchr004/msc-hpc/feedforward_python/results/feed_forward_1__dropout_0_8_results.csv", np.array(model1_dropout_0_5.probs), fmt="%s")
+np.savetxt("/home/vljchr004/msc-hpc/feedforward_python/results/feed_forward_1__dropout_0_8_results.csv", np.array(model1_dropout_0_8.probs), fmt="%s")
+
+model1_dropout_0_8.save('/home/vljchr004/msc-hpc/feedforward_python/feed_forward_1__dropout_0_8.h5')  # creates a HDF5 file 'my_model.h5'
+del model1_dropout_0_8
 
 model1_dropout_0_8_0_5 = Sequential([
     Dense(256, input_shape=(24,)),
@@ -196,4 +201,6 @@ model1_dropout_0_8_0_5.probs = model1_dropout_0_8_0_5.predict_proba(x_test)
 import numpy as np
 np.savetxt("/home/vljchr004/msc-hpc/feedforward_python/results/feed_forward_1__dropout_0_8_0_5_results.csv", np.array(model1_dropout_0_8_0_5.probs), fmt="%s")
 
+model1_dropout_0_8_0_5.save('/home/vljchr004/msc-hpc/feedforward_python/feed_forward_1__dropout_0_8_0_5.h5')  # creates a HDF5 file 'my_model.h5'
+del model1_dropout_0_8_0_5
 
