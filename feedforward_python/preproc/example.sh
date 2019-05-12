@@ -9,7 +9,7 @@
 #SBATCH --partition=ada
 
 # The line below means you need 1 worker node and a total of 2 cores
-#SBATCH --nodes=1 --ntasks=2
+#SBATCH --nodes=1 --ntasks=6
 
 # The line below indicates the wall time your job will need, 10 hours for example. NB, this is a mandatory directive!
 #SBATCH --time=10:00:00
@@ -41,4 +41,4 @@ module load python/anaconda-python-3.7
 
 # Your science stuff goes here...
 
-python -u /home/vljchr004/msc-hpc/feedforward_python/feed_forward_preproc.py > out.txt
+python -u /home/vljchr004/msc-hpc/feedforward_python/preproc/feed_forward_preproc.py > out.txt
