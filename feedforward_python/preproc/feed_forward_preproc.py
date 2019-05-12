@@ -21,24 +21,23 @@ from ast import literal_eval
 
 d = {}
 
-#    for i in range(0,len(files_in_order)):
-#                print(files_in_order[i])
-#di = open(files_in_order[i])
-di = open(i)
-di = di.read()
-if di == "}":
-    pass
-else:
-    di = di + "}"
-    di = literal_eval(di)
-    ki = list(di.keys())
-    j = len(d)
-    for k in ki:
-        j += 1000000000000000000000000000000123
-        di[j] = di.pop(k)
-        d.update(di)
-    #print(str(100*(i/len(files_in_order))))
-#            return(d)
+for i in range(0,len(files_in_order)):
+    print(files_in_order[i])
+    di = open(files_in_order[i])
+#di = open(i)
+    di = di.read()
+    if di == "}":
+        continue
+    else:
+        di = di + "}"
+        di = literal_eval(di)
+        ki = list(di.keys())
+        j = len(d)
+        for k in ki:
+            j += 1000000000000000000000000000000123
+            di[j] = di.pop(k)
+            d.update(di)
+        print(str(100*(i/len(files_in_order))))
             
 def layer_and_pdg(d,i):
     
@@ -81,6 +80,8 @@ def layer_and_pdg(d,i):
             
 # Parallelizing using Pool.apply()
 
+print("layer and pdg")
+
 import multiprocessing as mp
 
 ## Step 1: Init multiprocessing.Pool()
@@ -119,13 +120,15 @@ layer5 = lay_pdg[6]
 
 electron = []
 
+print("electrons")
+
 for i in pdgCode:
     if abs(i)==11:
         electron.append(1)
     else:
         electron.append(0)
 
-  
+print("get x and y in parallel")
 
 def x_y_getter(i):
     import numpy as np
@@ -288,6 +291,8 @@ pool.close()
 x = xy[0]
 y = xy[1]
 
+print("reshape x and y")
+
 import numpy as np
 
 x = np.reshape(x,(len(y),24))
@@ -295,6 +300,8 @@ x = x.astype('float32')
 
 mu = np.mean(x)
 x /= mu
+
+print("pickling files")
 
 import pickle
  
@@ -305,7 +312,7 @@ with open('/scratch/vljchr004/msc-thesis-data/y.pkl', 'wb') as y_file:
   pickle.dump(y, y_file)
 
 
-
+print("done.")
 
 
 
