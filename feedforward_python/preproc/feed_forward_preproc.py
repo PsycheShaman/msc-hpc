@@ -21,7 +21,9 @@ from ast import literal_eval
 
 d = {}
 
-for i in range(0,len(files_in_order)):
+#for i in range(0,len(files_in_order)):
+#practice run on 100 files:
+for i in range(0,100):
     print(files_in_order[i])
     di = open(files_in_order[i])
 #di = open(i)
