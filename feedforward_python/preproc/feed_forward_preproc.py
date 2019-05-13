@@ -22,8 +22,8 @@ from ast import literal_eval
 d = {}
 
 #for i in range(0,len(files_in_order)):
-#practice run on 100 files:
-for i in range(0,100):
+#practice run on 5 files:
+for i in range(0,5):
     print(files_in_order[i])
     di = open(files_in_order[i])
 #di = open(i)
@@ -42,6 +42,8 @@ for i in range(0,100):
         print(str(100*(i/len(files_in_order))))
             
 def layer_and_pdg(d,i):
+    
+    print(str(i))
     
 #    pdgCode = []
 #    
@@ -106,6 +108,8 @@ lay_pdg = [pool.apply(layer_and_pdg, args=(d,i)) for i in k]
 # Step 3: Don't forget to close
 pool.close()
 
+print("Get elements from layer and pdg function")
+
 pdgCode = lay_pdg[0]
 
 layer0 = lay_pdg[1]
@@ -122,7 +126,7 @@ layer5 = lay_pdg[6]
 
 electron = []
 
-print("electrons")
+print("electron one-hot encoding")
 
 for i in pdgCode:
     if abs(i)==11:
