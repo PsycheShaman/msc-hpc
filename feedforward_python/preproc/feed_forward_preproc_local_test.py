@@ -5,7 +5,7 @@ import glob
 
 print("imported glob")
 
-files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/unprocessed" + '/**/*.txt', recursive=True)
+files = glob.glob("C:\\Users\\Gerhard\\Documents\\msc-thesis-data\\unprocessed" + '\\**\\*.txt', recursive=True)
 
 a = list(range(1,len(files)-1))
 
@@ -278,10 +278,10 @@ print("pickling files")
 
 import pickle
  
-with open('/scratch/vljchr004/data/msc-thesis-data/x.pkl', 'wb') as x_file:
+with open('C:\\Users\\Gerhard\\Documents\\msc-thesis-data\\unprocessed\\x.pkl', 'wb') as x_file:
   pickle.dump(x, x_file)
   
-with open('/scratch/vljchr004/msc-thesis-data/y.pkl', 'wb') as y_file:
+with open('C:\\Users\\Gerhard\\Documents\\msc-thesis-data\\unprocessed\\y.pkl', 'wb') as y_file:
   pickle.dump(y, y_file)
 
 
