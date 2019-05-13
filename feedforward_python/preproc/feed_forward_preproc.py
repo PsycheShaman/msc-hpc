@@ -201,6 +201,65 @@ pool.close()
 
 print("get x and y in parallel")
 
+print("get x from layer 0")
+
+def x_0_getter(i):
+    import numpy as np
+    
+    layer0 = i
+    if type(layer0)==type(None) or np.array(layer0).shape==(17,0):
+        pass
+    else:
+        x0 = np.array(layer0)
+        x0 = np.sum(x0,axis=0)
+    
+    if 'x0' in locals():
+        return(x0)
+    
+# Parallelizing using Pool.apply()
+
+import multiprocessing as mp
+
+# Step 1: Init multiprocessing.Pool()
+pool = mp.Pool(mp.cpu_count())
+
+# Step 2: `pool.apply` the `howmany_within_range()`
+x0 = [pool.apply(x_0_getter, args=(i)) for i in (layer0)]
+
+# Step 3: Don't forget to close
+pool.close() 
+
+#
+
+print("get y from layer 0")
+
+def y_0_getter(i):
+    import numpy as np
+    
+    layer0 = i
+    if type(layer0)==type(None) or np.array(layer0).shape==(17,0):
+        pass
+    else:
+        y0 = np.array(electron)
+    
+    if 'y0' in locals():
+        return(y0)
+
+import multiprocessing as mp
+
+pool = mp.Pool(mp.cpu_count())
+
+y0 = [pool.apply(y_0_getter, args=(i)) for i in (electron)]
+
+pool.close() 
+
+#
+
+x = xy[0]
+y = xy[1]
+
+#####################
+
 def x_y_getter(i):
     import numpy as np
     
@@ -308,6 +367,8 @@ pool.close()
 
 x = xy[0]
 y = xy[1]
+
+#####################3
 
 print("reshape x and y")
 
