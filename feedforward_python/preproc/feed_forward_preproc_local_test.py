@@ -5,7 +5,7 @@ import glob
 
 print("imported glob")
 
-files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/unprocessed" + '/**/*.txt', recursive=True)
+files = glob.glob("C:\\Users\\Gerhard\\Documents\\msc-thesis-data\\unprocessed" + '\\**\\*.txt', recursive=True)
 
 a = list(range(1,len(files)-1))
 
@@ -19,9 +19,9 @@ from ast import literal_eval
 
 d = {}
 
-for i in range(0,len(files_in_order)):
+#for i in range(0,len(files_in_order)):
 #practice run on 5 files:
-#for i in range(0,5):
+for i in range(0,5):
     print(files_in_order[i])
     di = open(files_in_order[i])
     di = di.read()
@@ -37,18 +37,42 @@ for i in range(0,len(files_in_order)):
             di[j] = di.pop(k)
             d.update(di)
         print(str(100*(i/len(files_in_order))))
+            
+#def layer_and_pdg(d,i):
+#    
+#    print(str(i))
+#    
+#    pdgCode_i = d.get(i).get('pdgCode')    
+#    layer0_i = d.get(i).get('layer 0')
+#    layer1_i = d.get(i).get('layer 1')
+#    layer2_i = d.get(i).get('layer 2')
+#    layer3_i = d.get(i).get('layer 3')
+#    layer4_i = d.get(i).get('layer 4')
+#    layer5_i = d.get(i).get('layer 5')
+#    
+#    return((pdgCode_i,layer0_i,layer1_i,layer2_i,layer3_i,layer4_i,layer5_i))
 
 print("layer and pdg")
 
-print("get pdg")
+print("first just get pdg to prove concept")
 
 def pdg_getter(d,i):
     
     print(str(i))
     
     pdgCode_i = d.get(i).get('pdgCode')    
+#    layer0_i = d.get(i).get('layer 0')
+#    layer1_i = d.get(i).get('layer 1')
+#    layer2_i = d.get(i).get('layer 2')
+#    layer3_i = d.get(i).get('layer 3')
+#    layer4_i = d.get(i).get('layer 4')
+#    layer5_i = d.get(i).get('layer 5')
     
     return(pdgCode_i)
+    
+#    return((pdgCode_i,layer0_i,layer1_i,layer2_i,layer3_i,layer4_i,layer5_i))
+
+
 
 import multiprocessing as mp
 
@@ -62,6 +86,9 @@ pdgCode = [pool.apply(pdg_getter, args=(d,i)) for i in k]
 
 pool.close()
 
+
+print("Get elements from layer and pdg function")
+
 electron = []
 
 print("electron one-hot encoding")
@@ -73,131 +100,6 @@ for i in pdgCode:
         electron.append(1)
     else:
         electron.append(0)
-        
-print("get layer 0")
-        
-def layer0_getter(d,i):
-    
-    print(str(i))
-    
-    layer0_i = d.get(i).get('layer 0')
-    
-    return(layer0_i)
-
-
-
-import multiprocessing as mp
-
-k = d.keys() 
-
-print("get layer 0")
-
-pool = mp.Pool(mp.cpu_count())
-
-layer0 = [pool.apply(layer0_getter, args=(d,i)) for i in k]
-
-pool.close()
-
-        
-def layer1_getter(d,i):
-    
-    print(str(i))
-  
-    layer1_i = d.get(i).get('layer 1')
-    
-    return(layer1_i)
-
-import multiprocessing as mp
-
-k = d.keys() 
-
-print("get layer 1")
-
-pool = mp.Pool(mp.cpu_count())
-
-layer1 = [pool.apply(layer1_getter, args=(d,i)) for i in k]
-
-pool.close()
-
-def layer2_getter(d,i):
-    
-    print(str(i))
-  
-    layer2_i = d.get(i).get('layer 2')
-    
-    return(layer2_i)
-
-import multiprocessing as mp
-
-k = d.keys() 
-
-print("get layer 2")
-
-pool = mp.Pool(mp.cpu_count())
-
-layer2 = [pool.apply(layer2_getter, args=(d,i)) for i in k]
-
-pool.close()
-
-def layer3_getter(d,i):
-    
-    print(str(i))
-  
-    layer3_i = d.get(i).get('layer 3')
-    
-    return(layer3_i)
-
-import multiprocessing as mp
-
-k = d.keys() 
-
-print("get layer 3")
-
-pool = mp.Pool(mp.cpu_count())
-
-layer3 = [pool.apply(layer3_getter, args=(d,i)) for i in k]
-
-pool.close()
-
-def layer4_getter(d,i):
-    
-    print(str(i))
-  
-    layer4_i = d.get(i).get('layer 4')
-    
-    return(layer4_i)
-
-import multiprocessing as mp
-
-k = d.keys() 
-
-print("get layer 4")
-
-pool = mp.Pool(mp.cpu_count())
-
-layer4 = [pool.apply(layer4_getter, args=(d,i)) for i in k]
-
-pool.close()
-
-def layer5_getter(d,i):
-    
-    print(str(i))
-  
-    layer5_i = d.get(i).get('layer 5')
-    
-    return(layer5_i)
-
-import multiprocessing as mp
-
-k = d.keys() 
-
-print("get layer 5")
-
-pool = mp.Pool(mp.cpu_count())
-
-layer5 = [pool.apply(layer5_getter, args=(d,i)) for i in k]
-
-pool.close()
 
 print("get x and y in parallel")
 
@@ -259,6 +161,59 @@ def x_y_getter(i):
         x5 = np.sum(x5,axis=0)
         y5 = np.array(electron)
         
+#    for i in range(beg+1,len(layer0)):
+#        if type(layer0[i])==type(None) or np.array(layer0[i]).shape==(17,0):
+#            continue
+#        else:
+#            xi = np.array(layer0[i])
+#            xi = np.sum(xi,axis=0)
+#            yi = electron[i]
+#            x = np.concatenate((x,xi))
+#            y = np.append(y,yi)
+#        if type(layer1[i])==type(None) or np.array(layer1[i]).shape==(17,0):
+#            continue
+#        else:
+#            xi = np.array(layer1[i])
+#            xi = np.sum(xi,axis=0)
+#            yi = electron[i]
+#            x = np.concatenate((x,xi))
+#            y = np.append(y,yi)
+#        if type(layer2[i])==type(None) or np.array(layer2[i]).shape==(17,0):
+#            continue
+#        else:
+#            xi = np.array(layer2[i])
+#            xi = np.sum(xi,axis=0)
+#            yi = electron[i]
+#            x = np.concatenate((x,xi))
+#            y = np.append(y,yi)
+#        if type(layer3[i])==type(None) or np.array(layer3[i]).shape==(17,0):
+#            continue
+#        else:
+#            xi = np.array(layer3[i])
+#            xi = np.sum(xi,axis=0)
+#            yi = electron[i]
+#            x = np.concatenate((x,xi))
+#            y = np.append(y,yi)
+#        if type(layer4[i])==type(None) or np.array(layer4[i]).shape==(17,0):
+#            continue
+#        else:
+#            xi = np.array(layer4[i])
+#            xi = np.sum(xi,axis=0)
+#            yi = electron[i]
+#            x = np.concatenate((x,xi))
+#            y = np.append(y,yi)
+#        if type(layer5[i])==type(None) or np.array(layer5[i]).shape==(17,0):
+#            continue
+#        else:
+#            xi = np.array(layer5[i])
+#            xi = np.sum(xi,axis=0)
+#            yi = electron[i]
+#            x = np.concatenate((x,xi))
+#            y = np.append(y,yi)
+#        print(str(100*i/len(layer0)))
+        
+#        [x0,x1,x2,x3,x4,x5]
+#        [y0,y1,y2,y3,y4,y5]
         
     xlist = []
     ylist = []
@@ -323,10 +278,10 @@ print("pickling files")
 
 import pickle
  
-with open('/scratch/vljchr004/data/msc-thesis-data/x.pkl', 'wb') as x_file:
+with open('C:\\Users\\Gerhard\\Documents\\msc-thesis-data\\unprocessed\\x.pkl', 'wb') as x_file:
   pickle.dump(x, x_file)
   
-with open('/scratch/vljchr004/msc-thesis-data/y.pkl', 'wb') as y_file:
+with open('C:\\Users\\Gerhard\\Documents\\msc-thesis-data\\unprocessed\\y.pkl', 'wb') as y_file:
   pickle.dump(y, y_file)
 
 
