@@ -128,8 +128,10 @@ electron = []
 
 print("electron one-hot encoding")
 
+import numpy as np
+
 for i in pdgCode:
-    if abs(i)==11:
+    if np.abs(i)==11:
         electron.append(1)
     else:
         electron.append(0)
