@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vljchr004/msc-hpc/feedforward_python/preproc/feed_forward_preproc.py", line 27, in <module>
-    di = open(i)
-OSError: [Errno 9] Bad file descriptor
