@@ -41,4 +41,4 @@ module load python/anaconda-python-3.7
 
 # Your science stuff goes here...
 
-python -u /home/vljchr004/msc-hpc/feedforward_python/preproc/feed_forward_preproc.py > out.txt
+python -u /home/vljchr004/msc-hpc/feedforward_python/preproc/feed_forward_preproc.py '000265309' > out.txt
