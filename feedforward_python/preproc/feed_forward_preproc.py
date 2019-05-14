@@ -316,10 +316,10 @@ print("pickling files")
 
 import pickle
 
-with open('/scratch/vljchr004/data/msc-thesis-data/x.pkl', 'wb') as x_file:
+with open('/scratch/vljchr004/data/msc-thesis-data/x_' + run + '.pkl', 'wb') as x_file:
   pickle.dump(x, x_file)
 
-with open('/scratch/vljchr004/msc-thesis-data/y.pkl', 'wb') as y_file:
+with open('/scratch/vljchr004/msc-thesis-data/y_' + run + '.pkl', 'wb') as y_file:
   pickle.dump(y, y_file)
 
 
