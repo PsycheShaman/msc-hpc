@@ -1,0 +1,204 @@
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("run", help="enter the specific run you need to process",type=str)
+args = parser.parse_args()
+
+run = str(args.run)
+
+print("starting")
+
+import glob
+
+print("imported glob")
+
+files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/unprocessed/" + run + '/**/*.txt', recursive=True)
+
+a = list(range(1,len(files)-1))
+
+files_in_order = [files[i] for i in a]
+
+print("read files list")
+
+from ast import literal_eval
+
+def file_reader(i):
+    di = open(i)
+    di = di.read()
+    if di == "}":
+        pass
+    else:
+        di = di + "}"
+        di = literal_eval(di)
+        ki = list(di.keys())
+        pdgCode = [di.get(k).get('pdgCode') for k in ki]
+        layer0 = [di.get(k).get('layer0') for k in ki]
+        layer1 = [di.get(k).get('layer1') for k in ki]
+        layer2 = [di.get(k).get('layer2') for k in ki]
+        layer3 = [di.get(k).get('layer3') for k in ki]
+        layer4 = [di.get(k).get('layer4') for k in ki]
+        layer5 = [di.get(k).get('layer5') for k in ki]
+        return((pdgCode,layer0,layer1,layer2,layer3,layer4,layer5))
+
+import multiprocessing as mp
+
+pool = mp.Pool(mp.cpu_count())
+
+d = [pool.apply(file_reader, args=(i)) for i in files_in_order]
+
+pool.close()
+
+pdgCode = d[0]
+layer0 = d[1]
+layer1 = d[2]
+layer2 = d[3]
+layer3 = d[4]
+layer4 = d[5]
+layer5 = d[6]
+
+import numpy as np
+
+def pdg_code_to_elec(i):
+    if np.abs(i)==11:
+        return(1)
+    else:
+        return(0)
+        
+electron = [pdg_code_to_elec(i) for i in pdgCode]
+
+#TODO: look at the rest
+
+def x_0_getter(i):
+    import numpy as np
+
+    layer0 = i
+    if type(layer0)==type(None) or np.array(layer0).shape==(17,0):
+        pass
+    else:
+        x0 = np.array(layer0)
+        x0 = np.sum(x0,axis=0)
+
+    if 'x0' in locals():
+        return(x0)
+#
+
+print("get y from layer 0")
+
+def y_0_getter(electron,i):
+    import numpy as np
+
+    layer0 = i
+    if type(layer0)==type(None) or np.array(layer0).shape==(17,0):
+        pass
+    else:
+        y0 = np.array(electron)
+
+    if 'y0' in locals():
+        return(y0)
+
+pool = mp.Pool(mp.cpu_count())
+
+x0 = [pool.apply(x_0_getter, args=(i)) for i in (layer0)]
+
+pool.close()
+
+
+pool = mp.Pool(mp.cpu_count())
+
+y0 = [pool.apply(y_0_getter, args=(i,electron)) for i in (layer0)]
+
+pool.close()
+
+pool = mp.Pool(mp.cpu_count())
+
+x1 = [pool.apply(x_0_getter, args=(i)) for i in (layer1)]
+
+pool.close()
+
+
+pool = mp.Pool(mp.cpu_count())
+
+y1 = [pool.apply(y_0_getter, args=(i,electron)) for i in (layer1)]
+
+pool.close()
+
+pool = mp.Pool(mp.cpu_count())
+
+x2 = [pool.apply(x_0_getter, args=(i)) for i in (layer2)]
+
+pool.close()
+
+
+pool = mp.Pool(mp.cpu_count())
+
+y2 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer2)]
+
+pool.close()
+
+pool = mp.Pool(mp.cpu_count())
+
+x3 = [pool.apply(x_0_getter, args=(i)) for i in (layer3)]
+
+pool.close()
+
+
+pool = mp.Pool(mp.cpu_count())
+
+y3 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer3)]
+
+pool.close()
+
+pool = mp.Pool(mp.cpu_count())
+
+x4 = [pool.apply(x_0_getter, args=(i)) for i in (layer4)]
+
+pool.close()
+
+
+pool = mp.Pool(mp.cpu_count())
+
+y4 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer4)]
+
+pool.close()
+
+pool = mp.Pool(mp.cpu_count())
+
+x5 = [pool.apply(x_0_getter, args=(i)) for i in (layer5)]
+
+pool.close()
+
+
+pool = mp.Pool(mp.cpu_count())
+
+y5 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer5)]
+
+pool.close()
+
+#
+
+x = np.concatenate((x0,x1,x2,x3,x4,x5),axis=None)
+
+y = np.concatenate((y0,y1,y2,y3,y4,y5),axis=None)
+
+print("reshape x and y")
+
+import numpy as np
+
+x = np.reshape(x,(len(y),24))
+x = x.astype('float32')
+
+mu = np.mean(x)
+x /= mu
+
+print("pickling files")
+
+import pickle
+
+with open('/scratch/vljchr004/data/msc-thesis-data/x_' + run + '.pkl', 'wb') as x_file:
+  pickle.dump(x, x_file)
+
+with open('/scratch/vljchr004/msc-thesis-data/y_' + run + '.pkl', 'wb') as y_file:
+  pickle.dump(y, y_file)
+
+
+print("done.")
