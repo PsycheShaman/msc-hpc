@@ -58,11 +58,31 @@ pdgCode = pdgCode[0]
 print(pdgCode)
 
 layer0 = d[1]
+
+print("this is layer 0 before transform............................................................................................")
+
+print(layer0)
+
+layer0 = layer0[0]
+
+print("this is layer 0 before transform............................................................................................")
+
+print(layer0)
+
 layer1 = d[2]
+layer1 = layer1[0]
+
 layer2 = d[3]
+layer2 = layer2[0]
+
 layer3 = d[4]
+layer3 = layer3[0]
+
 layer4 = d[5]
+layer4 = layer4[0]
+
 layer5 = d[6]
+layer5 = layer5[0]
 
 import numpy as np
 
