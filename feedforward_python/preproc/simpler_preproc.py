@@ -6,11 +6,11 @@ args = parser.parse_args()
 
 run = str(args.run)
 
-print("starting")
+print("starting........................................................................................")
 
 import glob
 
-print("imported glob")
+print("imported glob........................................................................................")
 
 files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/unprocessed/" + run + '/**/*.txt', recursive=True)
 
@@ -18,7 +18,7 @@ a = list(range(1,len(files)-1))
 
 files_in_order = [files[i] for i in a]
 
-print("read files list")
+print("read files list........................................................................................")
 
 from ast import literal_eval
 
@@ -82,7 +82,7 @@ def x_0_getter(i):
         return(x0)
 #
 
-print("get y from layer 0")
+print("get y from layer 0........................................................................................")
 
 def y_0_getter(electron,i):
     import numpy as np
@@ -95,6 +95,8 @@ def y_0_getter(electron,i):
 
     if 'y0' in locals():
         return(y0)
+
+print("layer 0........................................................................................")
 
 pool = mp.Pool(mp.cpu_count())
 
@@ -111,6 +113,8 @@ pool.close()
 
 pool = mp.Pool(mp.cpu_count())
 
+print("layer 1........................................................................................")
+
 x1 = [pool.apply(x_0_getter, args=(i)) for i in (layer1)]
 
 pool.close()
@@ -121,6 +125,8 @@ pool = mp.Pool(mp.cpu_count())
 y1 = [pool.apply(y_0_getter, args=(i,electron)) for i in (layer1)]
 
 pool.close()
+
+print("layer 2........................................................................................")
 
 pool = mp.Pool(mp.cpu_count())
 
@@ -135,6 +141,8 @@ y2 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer2)]
 
 pool.close()
 
+print("layer 3........................................................................................")
+
 pool = mp.Pool(mp.cpu_count())
 
 x3 = [pool.apply(x_0_getter, args=(i)) for i in (layer3)]
@@ -148,6 +156,8 @@ y3 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer3)]
 
 pool.close()
 
+print("layer 4........................................................................................")
+
 pool = mp.Pool(mp.cpu_count())
 
 x4 = [pool.apply(x_0_getter, args=(i)) for i in (layer4)]
@@ -160,6 +170,8 @@ pool = mp.Pool(mp.cpu_count())
 y4 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer4)]
 
 pool.close()
+
+print("layer 5........................................................................................")
 
 pool = mp.Pool(mp.cpu_count())
 
@@ -176,11 +188,13 @@ pool.close()
 
 #
 
+print("concatenating........................................................................................")
+
 x = np.concatenate((x0,x1,x2,x3,x4,x5),axis=None)
 
 y = np.concatenate((y0,y1,y2,y3,y4,y5),axis=None)
 
-print("reshape x and y")
+print("reshape x and y........................................................................................")
 
 import numpy as np
 
@@ -190,7 +204,7 @@ x = x.astype('float32')
 mu = np.mean(x)
 x /= mu
 
-print("pickling files")
+print("pickling files........................................................................................")
 
 import pickle
 
@@ -201,4 +215,4 @@ with open('/scratch/vljchr004/msc-thesis-data/y_' + run + '.pkl', 'wb') as y_fil
   pickle.dump(y, y_file)
 
 
-print("done.")
+print("done.........................................................................................")
