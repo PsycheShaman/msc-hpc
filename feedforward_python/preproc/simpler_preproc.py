@@ -53,6 +53,8 @@ print("this is pdg..............................................................
 
 pdgCode = d[0]
 
+pdgCode = pdgCode[0]
+
 print(pdgCode)
 
 layer0 = d[1]
