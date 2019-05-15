@@ -44,7 +44,7 @@ import multiprocessing as mp
 
 pool = mp.Pool(mp.cpu_count())
 
-d = [pool.apply(file_reader, args=(i)) for i in files_in_order]
+d = pool.map(file_reader, files_in_order)
 
 pool.close()
 
@@ -100,29 +100,27 @@ print("layer 0..................................................................
 
 pool = mp.Pool(mp.cpu_count())
 
-x0 = [pool.apply(x_0_getter, args=(i)) for i in (layer0)]
-
-pool.close()
-
-
-pool = mp.Pool(mp.cpu_count())
-
-y0 = [pool.apply(y_0_getter, args=(i,electron)) for i in (layer0)]
+x0 = pool.map(x_0_getter, layer0)
 
 pool.close()
 
 pool = mp.Pool(mp.cpu_count())
+
+y0 = pool.map(y_0_getter, layer0)
+
+pool.close()
 
 print("layer 1........................................................................................")
 
-x1 = [pool.apply(x_0_getter, args=(i)) for i in (layer1)]
+pool = mp.Pool(mp.cpu_count())
+
+x1 = pool.map(x_0_getter, layer1)
 
 pool.close()
 
-
 pool = mp.Pool(mp.cpu_count())
 
-y1 = [pool.apply(y_0_getter, args=(i,electron)) for i in (layer1)]
+y1 = pool.map(y_0_getter, layer1)
 
 pool.close()
 
@@ -130,14 +128,13 @@ print("layer 2..................................................................
 
 pool = mp.Pool(mp.cpu_count())
 
-x2 = [pool.apply(x_0_getter, args=(i)) for i in (layer2)]
+x2 = pool.map(x_0_getter, layer2)
 
 pool.close()
 
-
 pool = mp.Pool(mp.cpu_count())
 
-y2 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer2)]
+y2 = pool.map(y_0_getter, layer2)
 
 pool.close()
 
@@ -145,14 +142,13 @@ print("layer 3..................................................................
 
 pool = mp.Pool(mp.cpu_count())
 
-x3 = [pool.apply(x_0_getter, args=(i)) for i in (layer3)]
+x3 = pool.map(x_0_getter, layer3)
 
 pool.close()
 
-
 pool = mp.Pool(mp.cpu_count())
 
-y3 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer3)]
+y3 = pool.map(y_0_getter, layer3)
 
 pool.close()
 
@@ -160,14 +156,13 @@ print("layer 4..................................................................
 
 pool = mp.Pool(mp.cpu_count())
 
-x4 = [pool.apply(x_0_getter, args=(i)) for i in (layer4)]
+x4 = pool.map(x_0_getter, layer4)
 
 pool.close()
 
-
 pool = mp.Pool(mp.cpu_count())
 
-y4 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer4)]
+y4 = pool.map(y_0_getter, layer4)
 
 pool.close()
 
@@ -175,16 +170,97 @@ print("layer 5..................................................................
 
 pool = mp.Pool(mp.cpu_count())
 
-x5 = [pool.apply(x_0_getter, args=(i)) for i in (layer5)]
+x5 = pool.map(x_0_getter, layer5)
 
 pool.close()
-
 
 pool = mp.Pool(mp.cpu_count())
 
-y5 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer5)]
+y5 = pool.map(y_0_getter, layer5)
 
 pool.close()
+
+
+#pool = mp.Pool(mp.cpu_count())
+#
+#y0 = [pool.apply(y_0_getter, args=(i,electron)) for i in (layer0)]
+#
+#pool.close()
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#print("layer 1........................................................................................")
+#
+#x1 = [pool.apply(x_0_getter, args=(i)) for i in (layer1)]
+#
+#pool.close()
+#
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#y1 = [pool.apply(y_0_getter, args=(i,electron)) for i in (layer1)]
+#
+#pool.close()
+#
+#print("layer 2........................................................................................")
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#x2 = [pool.apply(x_0_getter, args=(i)) for i in (layer2)]
+#
+#pool.close()
+#
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#y2 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer2)]
+#
+#pool.close()
+#
+#print("layer 3........................................................................................")
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#x3 = [pool.apply(x_0_getter, args=(i)) for i in (layer3)]
+#
+#pool.close()
+#
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#y3 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer3)]
+#
+#pool.close()
+#
+#print("layer 4........................................................................................")
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#x4 = [pool.apply(x_0_getter, args=(i)) for i in (layer4)]
+#
+#pool.close()
+#
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#y4 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer4)]
+#
+#pool.close()
+#
+#print("layer 5........................................................................................")
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#x5 = [pool.apply(x_0_getter, args=(i)) for i in (layer5)]
+#
+#pool.close()
+#
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#y5 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer5)]
+#
+#pool.close()
 
 #
 
