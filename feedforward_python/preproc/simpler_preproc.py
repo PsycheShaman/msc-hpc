@@ -48,7 +48,13 @@ d = pool.map(file_reader, files_in_order)
 
 pool.close()
 
+print("mapped out files to useful elements....................................................................")
+print("this is pdg............................................................................................")
+
 pdgCode = d[0]
+
+print(pdgCode)
+
 layer0 = d[1]
 layer1 = d[2]
 layer2 = d[3]
@@ -64,7 +70,15 @@ def pdg_code_to_elec(i):
     else:
         return(0)
         
-electron = [pdg_code_to_elec(i) for i in pdgCode]
+#electron = [pdg_code_to_elec(i) for i in pdgCode]
+
+pool = mp.Pool(mp.cpu_count())
+
+electron = pool.map(pdg_code_to_elec,pdgCode)
+
+pool.close()
+
+print("mapped out electrons....................................................................")
 
 #TODO: look at the rest
 
