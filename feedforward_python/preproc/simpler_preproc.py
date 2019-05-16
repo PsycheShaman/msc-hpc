@@ -124,8 +124,6 @@ def pdg_code_to_elec(i):
         
 electron = [pdg_code_to_elec(i) for i in pdgCode]
 
-electron = electron[0]
-
 print("mapped out electrons....................................................................")
 
 print(electron)
@@ -161,7 +159,7 @@ def y_0_getter(electron,i):
 print("layer 0........................................................................................")
 
 x0 = [x_0_getter(i) for i in layer0]
-y0 = [y_0_getter(i) for i in layer0]
+y0 = [y_0_getter(electron,i) for i in layer0]
 
 x0 = x0[0]
 y0 = y0[0]
@@ -177,7 +175,7 @@ print(y0)
 print("layer 1........................................................................................")
 
 x1 = [x_0_getter(i) for i in layer1]
-y1 = [y_0_getter(i) for i in layer1]
+y1 = [y_0_getter(electron,i) for i in layer1]
 
 x1 = x1[0]
 y1 = y1[0]
@@ -185,7 +183,7 @@ y1 = y1[0]
 print("layer 2........................................................................................")
 
 x2 = [x_0_getter(i) for i in layer2]
-y2 = [y_0_getter(i) for i in layer2]
+y2 = [y_0_getter(electron,i) for i in layer2]
 
 x2 = x2[0]
 y2 = y2[0]
@@ -193,7 +191,7 @@ y2 = y2[0]
 print("layer 3........................................................................................")
 
 x3 = [x_0_getter(i) for i in layer3]
-y3 = [y_0_getter(i) for i in layer3]
+y3 = [y_0_getter(electron,i) for i in layer3]
 
 x3 = x3[0]
 y3 = y3[0]
@@ -201,7 +199,7 @@ y3 = y3[0]
 print("layer 4........................................................................................")
 
 x4 = [x_0_getter(i) for i in layer4]
-y4 = [y_0_getter(i) for i in layer4]
+y4 = [y_0_getter(electron,i) for i in layer4]
 
 x4 = x4[0]
 y4 = y4[0]
@@ -209,7 +207,7 @@ y4 = y4[0]
 print("layer 5........................................................................................")
 
 x5 = [x_0_getter(i) for i in layer5]
-y5 = [y_0_getter(i) for i in layer5]
+y5 = [y_0_getter(electron,i) for i in layer5]
 
 x5 = x5[0]
 y5 = y5[0]
