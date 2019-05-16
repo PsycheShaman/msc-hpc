@@ -220,6 +220,8 @@ x = x.flatten()
 
 x = [i for i in x if i is not None]
 
+x = np.concatenate(x).ravel()
+
 y = np.concatenate((y0,y1,y2,y3,y4,y5),axis=None)
 
 #def recursive_len(item):
@@ -230,6 +232,8 @@ y = np.concatenate((y0,y1,y2,y3,y4,y5),axis=None)
 y = y.flatten()
 
 y = [i for i in y if i is not None]
+
+y = np.concatenate(y).ravel()
 
 print("reshape x and y........................................................................................")
 
