@@ -216,20 +216,26 @@ print("concatenating............................................................
 
 x = np.concatenate((x0,x1,x2,x3,x4,x5),axis=None)
 
+x = x.flatten()
+
+x = [i for i in x if i is not None]
+
 y = np.concatenate((y0,y1,y2,y3,y4,y5),axis=None)
 
-def recursive_len(item):
-    return sum(recursive_len(subitem) for subitem in item)
+#def recursive_len(item):
+#    return sum(recursive_len(subitem) for subitem in item)
+#
+#len_y = recursive_len(y)
 
-len_y = recursive_len(y)
+y = y.flatten()
 
-y = np.reshape(y,len_y)
+y = [i for i in y if i is not None]
 
 print("reshape x and y........................................................................................")
 
 import numpy as np
 
-x = np.reshape(x,(len_y,24))
+x = np.reshape(x,(len(y),24))
 x = x.astype('float32')
 
 mu = np.mean(x)
