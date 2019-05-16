@@ -52,43 +52,57 @@ print("pdg......................................................................
         
 pdgCode = [file_reader1(i) for i in files_in_order]
 
-print(pdgCode)
+pdgCode = pdgCode[0]
+
+#print(pdgCode)
 
 print("layer 0........................................................................................")
 
 layer0 = [file_reader2(i,"layer 0") for i in files_in_order]
 
-print(layer0)
+layer0 = layer0[0]
+
+#print(layer0)
 
 print("layer 1........................................................................................")
 
 layer1 = [file_reader2(i,"layer 1") for i in files_in_order]
 
-print(layer1)
+layer1 = layer1[0]
+
+#print(layer1)
 
 print("layer 2........................................................................................")
 
 layer2 = [file_reader2(i,"layer 2") for i in files_in_order]
 
-print(layer2)
+layer2 = layer2[0]
+
+#print(layer2)
 
 print("layer 3........................................................................................")
 
 layer3 = [file_reader2(i,"layer 3") for i in files_in_order]
 
-print(layer3)
+layer3 = layer3[0]
+
+#print(layer3)
 
 print("layer 4........................................................................................")
 
 layer4 = [file_reader2(i,"layer 4") for i in files_in_order]
 
-print(layer4)
+layer4 = layer4[0]
+
+#print(layer4)
 
 print("layer 5........................................................................................")
 
 layer5 = [file_reader2(i,"layer 5") for i in files_in_order]
 
-print(layer5)
+layer5 = layer5[0]
+
+#print(layer5)
 
 print("mapped out files to useful elements....................................................................")
 
@@ -109,6 +123,8 @@ def pdg_code_to_elec(i):
 #pool.close()
         
 electron = [pdg_code_to_elec(i) for i in pdgCode]
+
+electron = electron[0]
 
 print("mapped out electrons....................................................................")
 
@@ -147,6 +163,9 @@ print("layer 0..................................................................
 x0 = [x_0_getter(i) for i in layer0]
 y0 = [y_0_getter(i) for i in layer0]
 
+x0 = x0[0]
+y0 = y0[0]
+
 print("x0........................................................................................")
 
 print(x0)
@@ -160,25 +179,40 @@ print("layer 1..................................................................
 x1 = [x_0_getter(i) for i in layer1]
 y1 = [y_0_getter(i) for i in layer1]
 
+x1 = x1[0]
+y1 = y1[0]
+
 print("layer 2........................................................................................")
 
 x2 = [x_0_getter(i) for i in layer2]
 y2 = [y_0_getter(i) for i in layer2]
+
+x2 = x2[0]
+y2 = y2[0]
 
 print("layer 3........................................................................................")
 
 x3 = [x_0_getter(i) for i in layer3]
 y3 = [y_0_getter(i) for i in layer3]
 
+x3 = x3[0]
+y3 = y3[0]
+
 print("layer 4........................................................................................")
 
 x4 = [x_0_getter(i) for i in layer4]
 y4 = [y_0_getter(i) for i in layer4]
 
+x4 = x4[0]
+y4 = y4[0]
+
 print("layer 5........................................................................................")
 
 x5 = [x_0_getter(i) for i in layer5]
 y5 = [y_0_getter(i) for i in layer5]
+
+x5 = x5[0]
+y5 = y5[0]
 
 print("concatenating........................................................................................")
 
