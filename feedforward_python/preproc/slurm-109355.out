@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/vljchr004/msc-hpc/feedforward_python/preproc/simpler_preproc.py", line 105, in <module>
+    electron = [pdg_code_to_elec(i) for i in pdgCode]
+  File "/home/vljchr004/msc-hpc/feedforward_python/preproc/simpler_preproc.py", line 105, in <listcomp>
+    electron = [pdg_code_to_elec(i) for i in pdgCode]
+  File "/home/vljchr004/msc-hpc/feedforward_python/preproc/simpler_preproc.py", line 92, in pdg_code_to_elec
+    if np.abs(i)==11:
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()

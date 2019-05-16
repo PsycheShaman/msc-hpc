@@ -9,7 +9,7 @@
 #SBATCH --partition=ada
 
 # The line below means you need 1 worker node and a total of 2 cores
-#SBATCH --nodes=6 --ntasks=36
+#SBATCH --nodes=1 --ntasks=20
 
 # The line below indicates the wall time your job will need, 10 hours for example. NB, this is a mandatory directive!
 #SBATCH --time=24:00:00
