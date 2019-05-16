@@ -1,3 +1,5 @@
+print("==============================================================================================")
+
 import argparse
 
 parser = argparse.ArgumentParser()
@@ -22,7 +24,7 @@ print("read files list..........................................................
 
 from ast import literal_eval
 
-def file_reader(i):
+def file_reader1(i):
     di = open(i)
     di = di.read()
     if di == "}":
@@ -32,59 +34,63 @@ def file_reader(i):
         di = literal_eval(di)
         ki = list(di.keys())
         pdgCode = [di.get(k).get('pdgCode') for k in ki]
-        layer0 = [di.get(k).get('layer0') for k in ki]
-        layer1 = [di.get(k).get('layer1') for k in ki]
-        layer2 = [di.get(k).get('layer2') for k in ki]
-        layer3 = [di.get(k).get('layer3') for k in ki]
-        layer4 = [di.get(k).get('layer4') for k in ki]
-        layer5 = [di.get(k).get('layer5') for k in ki]
-        return((pdgCode,layer0,layer1,layer2,layer3,layer4,layer5))
-
-#import multiprocessing as mp
-#
-#pool = mp.Pool(mp.cpu_count())
-#
-#d = pool.map(file_reader, files_in_order)
-#
-#pool.close()
+        return(pdgCode)
         
-d = [file_reader(i) for i in files_in_order]
+def file_reader2(i,l):
+    di = open(i)
+    di = di.read()
+    if di == "}":
+        pass
+    else:
+        di = di + "}"
+        di = literal_eval(di)
+        ki = list(di.keys())
+        layer = [di.get(k).get(l) for k in ki]
+        return(layer)
 
-print("mapped out files to useful elements....................................................................")
-print("this is pdg............................................................................................")
-
-pdgCode = d[0]
-
-#pdgCode = pdgCode[0]
+print("pdg........................................................................................")
+        
+pdgCode = [file_reader1(i) for i in files_in_order]
 
 print(pdgCode)
 
-layer0 = d[1]
+print("layer 0........................................................................................")
 
-print("this is layer 0............................................................................................")
+layer0 = [file_reader2(i,"layer 0") for i in files_in_order]
 
 print(layer0)
 
-#layer0 = layer0[0]
-#
-#print("this is layer 0 before transform............................................................................................")
-#
-#print(layer0)
+print("layer 1........................................................................................")
 
-layer1 = d[2]
-#layer1 = layer1[0]
+layer1 = [file_reader2(i,"layer 1") for i in files_in_order]
 
-layer2 = d[3]
-#layer2 = layer2[0]
+print(layer1)
 
-layer3 = d[4]
-#layer3 = layer3[0]
+print("layer 2........................................................................................")
 
-layer4 = d[5]
-#layer4 = layer4[0]
+layer2 = [file_reader2(i,"layer 2") for i in files_in_order]
 
-layer5 = d[6]
-#layer5 = layer5[0]
+print(layer2)
+
+print("layer 3........................................................................................")
+
+layer3 = [file_reader2(i,"layer 3") for i in files_in_order]
+
+print(layer3)
+
+print("layer 4........................................................................................")
+
+layer4 = [file_reader2(i,"layer 4") for i in files_in_order]
+
+print(layer4)
+
+print("layer 5........................................................................................")
+
+layer5 = [file_reader2(i,"layer 5") for i in files_in_order]
+
+print(layer5)
+
+print("mapped out files to useful elements....................................................................")
 
 import numpy as np
 
@@ -106,7 +112,7 @@ electron = [pdg_code_to_elec(i) for i in pdgCode]
 
 print("mapped out electrons....................................................................")
 
-#TODO: look at the rest
+print(electron)
 
 def x_0_getter(i):
     import numpy as np
@@ -140,6 +146,14 @@ print("layer 0..................................................................
 
 x0 = [x_0_getter(i) for i in layer0]
 y0 = [y_0_getter(i) for i in layer0]
+
+print("x0........................................................................................")
+
+print(x0)
+
+print("y0........................................................................................")
+
+print(y0)
 
 print("layer 1........................................................................................")
 
@@ -182,6 +196,14 @@ x = x.astype('float32')
 mu = np.mean(x)
 x /= mu
 
+print("x.......................................................................................................")
+
+print(x)
+
+print("y.......................................................................................................")
+
+print(y)
+
 print("pickling files........................................................................................")
 
 import pickle
@@ -194,6 +216,8 @@ with open('/scratch/vljchr004/msc-thesis-data/y_' + run + '.pkl', 'wb') as y_fil
 
 
 print("done.........................................................................................")
+
+print("==============================================================================================")
 
 
 #pool = mp.Pool(mp.cpu_count())
