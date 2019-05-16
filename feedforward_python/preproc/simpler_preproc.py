@@ -46,6 +46,7 @@ def file_reader2(i,l):
         di = literal_eval(di)
         ki = list(di.keys())
         layer = [di.get(k).get(l) for k in ki]
+        #layer = np.concatenate().ravel()
         return(layer)
 
 print("pdg........................................................................................")
@@ -60,7 +61,7 @@ print("layer 0..................................................................
 
 layer0 = [file_reader2(i,"layer 0") for i in files_in_order]
 
-layer0 = layer0[0]
+#layer0 = layer0[0]
 
 #print(layer0)
 
@@ -68,7 +69,7 @@ print("layer 1..................................................................
 
 layer1 = [file_reader2(i,"layer 1") for i in files_in_order]
 
-layer1 = layer1[0]
+#layer1 = layer1[0]
 
 #print(layer1)
 
@@ -76,7 +77,7 @@ print("layer 2..................................................................
 
 layer2 = [file_reader2(i,"layer 2") for i in files_in_order]
 
-layer2 = layer2[0]
+#layer2 = layer2[0]
 
 #print(layer2)
 
@@ -84,7 +85,7 @@ print("layer 3..................................................................
 
 layer3 = [file_reader2(i,"layer 3") for i in files_in_order]
 
-layer3 = layer3[0]
+#layer3 = layer3[0]
 
 #print(layer3)
 
@@ -92,7 +93,7 @@ print("layer 4..................................................................
 
 layer4 = [file_reader2(i,"layer 4") for i in files_in_order]
 
-layer4 = layer4[0]
+#layer4 = layer4[0]
 
 #print(layer4)
 
@@ -100,7 +101,7 @@ print("layer 5..................................................................
 
 layer5 = [file_reader2(i,"layer 5") for i in files_in_order]
 
-layer5 = layer5[0]
+#layer5 = layer5[0]
 
 #print(layer5)
 
@@ -267,33 +268,3 @@ with open('/scratch/vljchr004/data/msc-thesis-data/y_' + run + '.pkl', 'wb') as 
 print("done.........................................................................................")
 
 print("==============================================================================================")
-#
-#
-#print("concatenating........................................................................................")
-#
-#x = np.concatenate((x0,x1,x2,x3,x4,x5),axis=None)
-#
-#y = np.concatenate((y0,y1,y2,y3,y4,y5),axis=None)
-#
-#print("reshape x and y........................................................................................")
-#
-#import numpy as np
-#
-#x = np.reshape(x,(len(y),24))
-#x = x.astype('float32')
-#
-#mu = np.mean(x)
-#x /= mu
-#
-#print("pickling files........................................................................................")
-#
-#import pickle
-#
-#with open('/scratch/vljchr004/data/msc-thesis-data/x_' + run + '.pkl', 'wb') as x_file:
-#  pickle.dump(x, x_file)
-#
-#with open('/scratch/vljchr004/msc-thesis-data/y_' + run + '.pkl', 'wb') as y_file:
-#  pickle.dump(y, y_file)
-#
-#
-#print("done.........................................................................................")
