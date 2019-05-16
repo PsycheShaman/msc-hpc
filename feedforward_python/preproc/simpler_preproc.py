@@ -161,8 +161,8 @@ print("layer 0..................................................................
 x0 = [x_0_getter(i) for i in layer0]
 y0 = [y_0_getter(electron,i) for i in layer0]
 
-x0 = x0[0]
-y0 = y0[0]
+#x0 = x0[0]
+#y0 = y0[0]
 
 print("x0........................................................................................")
 
@@ -177,40 +177,40 @@ print("layer 1..................................................................
 x1 = [x_0_getter(i) for i in layer1]
 y1 = [y_0_getter(electron,i) for i in layer1]
 
-x1 = x1[0]
-y1 = y1[0]
+#x1 = x1[0]
+#y1 = y1[0]
 
 print("layer 2........................................................................................")
 
 x2 = [x_0_getter(i) for i in layer2]
 y2 = [y_0_getter(electron,i) for i in layer2]
 
-x2 = x2[0]
-y2 = y2[0]
+#x2 = x2[0]
+#y2 = y2[0]
 
 print("layer 3........................................................................................")
 
 x3 = [x_0_getter(i) for i in layer3]
 y3 = [y_0_getter(electron,i) for i in layer3]
 
-x3 = x3[0]
-y3 = y3[0]
+#x3 = x3[0]
+#y3 = y3[0]
 
 print("layer 4........................................................................................")
 
 x4 = [x_0_getter(i) for i in layer4]
 y4 = [y_0_getter(electron,i) for i in layer4]
 
-x4 = x4[0]
-y4 = y4[0]
+#x4 = x4[0]
+#y4 = y4[0]
 
 print("layer 5........................................................................................")
 
 x5 = [x_0_getter(i) for i in layer5]
 y5 = [y_0_getter(electron,i) for i in layer5]
 
-x5 = x5[0]
-y5 = y5[0]
+#x5 = x5[0]
+#y5 = y5[0]
 
 print("concatenating........................................................................................")
 
@@ -218,11 +218,18 @@ x = np.concatenate((x0,x1,x2,x3,x4,x5),axis=None)
 
 y = np.concatenate((y0,y1,y2,y3,y4,y5),axis=None)
 
+def recursive_len(item):
+    return sum(recursive_len(subitem) for subitem in item)
+
+len_y = recursive_len(y)
+
+y = np.reshape(y,len_y)
+
 print("reshape x and y........................................................................................")
 
 import numpy as np
 
-x = np.reshape(x,(len(y),24))
+x = np.reshape(x,(len_y,24))
 x = x.astype('float32')
 
 mu = np.mean(x)
@@ -250,201 +257,33 @@ with open('/scratch/vljchr004/msc-thesis-data/y_' + run + '.pkl', 'wb') as y_fil
 print("done.........................................................................................")
 
 print("==============================================================================================")
-
-
-#pool = mp.Pool(mp.cpu_count())
 #
-#x0 = pool.map(x_0_getter, layer0)
 #
-#pool.close()
-
-
-
-#pool = mp.Pool(mp.cpu_count())
+#print("concatenating........................................................................................")
 #
-#y0 = pool.map(y_0_getter, layer0)
+#x = np.concatenate((x0,x1,x2,x3,x4,x5),axis=None)
 #
-#pool.close()
+#y = np.concatenate((y0,y1,y2,y3,y4,y5),axis=None)
 #
-#print("layer 1........................................................................................")
+#print("reshape x and y........................................................................................")
 #
-#pool = mp.Pool(mp.cpu_count())
+#import numpy as np
 #
-#x1 = pool.map(x_0_getter, layer1)
+#x = np.reshape(x,(len(y),24))
+#x = x.astype('float32')
 #
-#pool.close()
+#mu = np.mean(x)
+#x /= mu
 #
-#pool = mp.Pool(mp.cpu_count())
+#print("pickling files........................................................................................")
 #
-#y1 = pool.map(y_0_getter, layer1)
+#import pickle
 #
-#pool.close()
+#with open('/scratch/vljchr004/data/msc-thesis-data/x_' + run + '.pkl', 'wb') as x_file:
+#  pickle.dump(x, x_file)
 #
-#print("layer 2........................................................................................")
+#with open('/scratch/vljchr004/msc-thesis-data/y_' + run + '.pkl', 'wb') as y_file:
+#  pickle.dump(y, y_file)
 #
-#pool = mp.Pool(mp.cpu_count())
 #
-#x2 = pool.map(x_0_getter, layer2)
-#
-#pool.close()
-#
-#pool = mp.Pool(mp.cpu_count())
-#
-#y2 = pool.map(y_0_getter, layer2)
-#
-#pool.close()
-#
-#print("layer 3........................................................................................")
-#
-#pool = mp.Pool(mp.cpu_count())
-#
-#x3 = pool.map(x_0_getter, layer3)
-#
-#pool.close()
-#
-#pool = mp.Pool(mp.cpu_count())
-#
-#y3 = pool.map(y_0_getter, layer3)
-#
-#pool.close()
-#
-#print("layer 4........................................................................................")
-#
-#pool = mp.Pool(mp.cpu_count())
-#
-#x4 = pool.map(x_0_getter, layer4)
-#
-#pool.close()
-#
-#pool = mp.Pool(mp.cpu_count())
-#
-#y4 = pool.map(y_0_getter, layer4)
-#
-#pool.close()
-#
-#print("layer 5........................................................................................")
-#
-#pool = mp.Pool(mp.cpu_count())
-#
-#x5 = pool.map(x_0_getter, layer5)
-#
-#pool.close()
-#
-#pool = mp.Pool(mp.cpu_count())
-#
-#y5 = pool.map(y_0_getter, layer5)
-#
-#pool.close()
-
-
-#pool = mp.Pool(mp.cpu_count())
-#
-#y0 = [pool.apply(y_0_getter, args=(i,electron)) for i in (layer0)]
-#
-#pool.close()
-#
-#pool = mp.Pool(mp.cpu_count())
-#
-#print("layer 1........................................................................................")
-#
-#x1 = [pool.apply(x_0_getter, args=(i)) for i in (layer1)]
-#
-#pool.close()
-#
-#
-#pool = mp.Pool(mp.cpu_count())
-#
-#y1 = [pool.apply(y_0_getter, args=(i,electron)) for i in (layer1)]
-#
-#pool.close()
-#
-#print("layer 2........................................................................................")
-#
-#pool = mp.Pool(mp.cpu_count())
-#
-#x2 = [pool.apply(x_0_getter, args=(i)) for i in (layer2)]
-#
-#pool.close()
-#
-#
-#pool = mp.Pool(mp.cpu_count())
-#
-#y2 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer2)]
-#
-#pool.close()
-#
-#print("layer 3........................................................................................")
-#
-#pool = mp.Pool(mp.cpu_count())
-#
-#x3 = [pool.apply(x_0_getter, args=(i)) for i in (layer3)]
-#
-#pool.close()
-#
-#
-#pool = mp.Pool(mp.cpu_count())
-#
-#y3 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer3)]
-#
-#pool.close()
-#
-#print("layer 4........................................................................................")
-#
-#pool = mp.Pool(mp.cpu_count())
-#
-#x4 = [pool.apply(x_0_getter, args=(i)) for i in (layer4)]
-#
-#pool.close()
-#
-#
-#pool = mp.Pool(mp.cpu_count())
-#
-#y4 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer4)]
-#
-#pool.close()
-#
-#print("layer 5........................................................................................")
-#
-#pool = mp.Pool(mp.cpu_count())
-#
-#x5 = [pool.apply(x_0_getter, args=(i)) for i in (layer5)]
-#
-#pool.close()
-#
-#
-#pool = mp.Pool(mp.cpu_count())
-#
-#y5 = [pool.apply(y_0_getter, args=(electron,i)) for i in (layer5)]
-#
-#pool.close()
-
-#
-
-print("concatenating........................................................................................")
-
-x = np.concatenate((x0,x1,x2,x3,x4,x5),axis=None)
-
-y = np.concatenate((y0,y1,y2,y3,y4,y5),axis=None)
-
-print("reshape x and y........................................................................................")
-
-import numpy as np
-
-x = np.reshape(x,(len(y),24))
-x = x.astype('float32')
-
-mu = np.mean(x)
-x /= mu
-
-print("pickling files........................................................................................")
-
-import pickle
-
-with open('/scratch/vljchr004/data/msc-thesis-data/x_' + run + '.pkl', 'wb') as x_file:
-  pickle.dump(x, x_file)
-
-with open('/scratch/vljchr004/msc-thesis-data/y_' + run + '.pkl', 'wb') as y_file:
-  pickle.dump(y, y_file)
-
-
-print("done.........................................................................................")
+#print("done.........................................................................................")
