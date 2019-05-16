@@ -40,49 +40,51 @@ def file_reader(i):
         layer5 = [di.get(k).get('layer5') for k in ki]
         return((pdgCode,layer0,layer1,layer2,layer3,layer4,layer5))
 
-import multiprocessing as mp
-
-pool = mp.Pool(mp.cpu_count())
-
-d = pool.map(file_reader, files_in_order)
-
-pool.close()
+#import multiprocessing as mp
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#d = pool.map(file_reader, files_in_order)
+#
+#pool.close()
+        
+d = [file_reader(i) for i in files_in_order]
 
 print("mapped out files to useful elements....................................................................")
 print("this is pdg............................................................................................")
 
 pdgCode = d[0]
 
-pdgCode = pdgCode[0]
+#pdgCode = pdgCode[0]
 
 print(pdgCode)
 
 layer0 = d[1]
 
-print("this is layer 0 before transform............................................................................................")
+print("this is layer 0............................................................................................")
 
 print(layer0)
 
-layer0 = layer0[0]
-
-print("this is layer 0 before transform............................................................................................")
-
-print(layer0)
+#layer0 = layer0[0]
+#
+#print("this is layer 0 before transform............................................................................................")
+#
+#print(layer0)
 
 layer1 = d[2]
-layer1 = layer1[0]
+#layer1 = layer1[0]
 
 layer2 = d[3]
-layer2 = layer2[0]
+#layer2 = layer2[0]
 
 layer3 = d[4]
-layer3 = layer3[0]
+#layer3 = layer3[0]
 
 layer4 = d[5]
-layer4 = layer4[0]
+#layer4 = layer4[0]
 
 layer5 = d[6]
-layer5 = layer5[0]
+#layer5 = layer5[0]
 
 import numpy as np
 
@@ -94,11 +96,13 @@ def pdg_code_to_elec(i):
         
 #electron = [pdg_code_to_elec(i) for i in pdgCode]
 
-pool = mp.Pool(mp.cpu_count())
-
-electron = pool.map(pdg_code_to_elec,pdgCode)
-
-pool.close()
+#pool = mp.Pool(mp.cpu_count())
+#
+#electron = pool.map(pdg_code_to_elec,pdgCode)
+#
+#pool.close()
+        
+electron = [pdg_code_to_elec(i) for i in pdgCode]
 
 print("mapped out electrons....................................................................")
 
@@ -118,7 +122,7 @@ def x_0_getter(i):
         return(x0)
 #
 
-print("get y from layer 0........................................................................................")
+print("get x&y from layers........................................................................................")
 
 def y_0_getter(electron,i):
     import numpy as np
@@ -134,87 +138,147 @@ def y_0_getter(electron,i):
 
 print("layer 0........................................................................................")
 
-pool = mp.Pool(mp.cpu_count())
-
-x0 = pool.map(x_0_getter, layer0)
-
-pool.close()
-
-pool = mp.Pool(mp.cpu_count())
-
-y0 = pool.map(y_0_getter, layer0)
-
-pool.close()
+x0 = [x_0_getter(i) for i in layer0]
+y0 = [y_0_getter(i) for i in layer0]
 
 print("layer 1........................................................................................")
 
-pool = mp.Pool(mp.cpu_count())
-
-x1 = pool.map(x_0_getter, layer1)
-
-pool.close()
-
-pool = mp.Pool(mp.cpu_count())
-
-y1 = pool.map(y_0_getter, layer1)
-
-pool.close()
+x1 = [x_0_getter(i) for i in layer1]
+y1 = [y_0_getter(i) for i in layer1]
 
 print("layer 2........................................................................................")
 
-pool = mp.Pool(mp.cpu_count())
-
-x2 = pool.map(x_0_getter, layer2)
-
-pool.close()
-
-pool = mp.Pool(mp.cpu_count())
-
-y2 = pool.map(y_0_getter, layer2)
-
-pool.close()
+x2 = [x_0_getter(i) for i in layer2]
+y2 = [y_0_getter(i) for i in layer2]
 
 print("layer 3........................................................................................")
 
-pool = mp.Pool(mp.cpu_count())
-
-x3 = pool.map(x_0_getter, layer3)
-
-pool.close()
-
-pool = mp.Pool(mp.cpu_count())
-
-y3 = pool.map(y_0_getter, layer3)
-
-pool.close()
+x3 = [x_0_getter(i) for i in layer3]
+y3 = [y_0_getter(i) for i in layer3]
 
 print("layer 4........................................................................................")
 
-pool = mp.Pool(mp.cpu_count())
-
-x4 = pool.map(x_0_getter, layer4)
-
-pool.close()
-
-pool = mp.Pool(mp.cpu_count())
-
-y4 = pool.map(y_0_getter, layer4)
-
-pool.close()
+x4 = [x_0_getter(i) for i in layer4]
+y4 = [y_0_getter(i) for i in layer4]
 
 print("layer 5........................................................................................")
 
-pool = mp.Pool(mp.cpu_count())
+x5 = [x_0_getter(i) for i in layer5]
+y5 = [y_0_getter(i) for i in layer5]
 
-x5 = pool.map(x_0_getter, layer5)
+print("concatenating........................................................................................")
 
-pool.close()
+x = np.concatenate((x0,x1,x2,x3,x4,x5),axis=None)
 
-pool = mp.Pool(mp.cpu_count())
+y = np.concatenate((y0,y1,y2,y3,y4,y5),axis=None)
 
-y5 = pool.map(y_0_getter, layer5)
+print("reshape x and y........................................................................................")
 
-pool.close()
+import numpy as np
+
+x = np.reshape(x,(len(y),24))
+x = x.astype('float32')
+
+mu = np.mean(x)
+x /= mu
+
+print("pickling files........................................................................................")
+
+import pickle
+
+with open('/scratch/vljchr004/data/msc-thesis-data/x_' + run + '.pkl', 'wb') as x_file:
+  pickle.dump(x, x_file)
+
+with open('/scratch/vljchr004/msc-thesis-data/y_' + run + '.pkl', 'wb') as y_file:
+  pickle.dump(y, y_file)
+
+
+print("done.........................................................................................")
+
+
+#pool = mp.Pool(mp.cpu_count())
+#
+#x0 = pool.map(x_0_getter, layer0)
+#
+#pool.close()
+
+
+
+#pool = mp.Pool(mp.cpu_count())
+#
+#y0 = pool.map(y_0_getter, layer0)
+#
+#pool.close()
+#
+#print("layer 1........................................................................................")
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#x1 = pool.map(x_0_getter, layer1)
+#
+#pool.close()
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#y1 = pool.map(y_0_getter, layer1)
+#
+#pool.close()
+#
+#print("layer 2........................................................................................")
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#x2 = pool.map(x_0_getter, layer2)
+#
+#pool.close()
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#y2 = pool.map(y_0_getter, layer2)
+#
+#pool.close()
+#
+#print("layer 3........................................................................................")
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#x3 = pool.map(x_0_getter, layer3)
+#
+#pool.close()
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#y3 = pool.map(y_0_getter, layer3)
+#
+#pool.close()
+#
+#print("layer 4........................................................................................")
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#x4 = pool.map(x_0_getter, layer4)
+#
+#pool.close()
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#y4 = pool.map(y_0_getter, layer4)
+#
+#pool.close()
+#
+#print("layer 5........................................................................................")
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#x5 = pool.map(x_0_getter, layer5)
+#
+#pool.close()
+#
+#pool = mp.Pool(mp.cpu_count())
+#
+#y5 = pool.map(y_0_getter, layer5)
+#
+#pool.close()
 
 
 #pool = mp.Pool(mp.cpu_count())
