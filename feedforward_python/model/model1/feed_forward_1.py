@@ -1,16 +1,19 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed May  8 22:47:42 2019
+print("==============================================================================================")
 
-@author: gerhard
-"""
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("run", help="enter the specific run you need to process",type=str)
+args = parser.parse_args()
+
+run = str(args.run)
 
 import pickle
  
-with open('/scratch/vljchr004/data/msc-thesis-data/x.pkl', 'rb') as x_file:
+with open('/scratch/vljchr004/data/msc-thesis-data/x_000' + run + '.pkl', 'rb') as x_file:
     x = pickle.load(x_file)
 
-with open('/scratch/vljchr004/data/msc-thesis-data/y.pkl', 'rb') as y_file:
+with open('/scratch/vljchr004/data/msc-thesis-data/y_000' + run + '.pkl', 'rb') as y_file:
     y = pickle.load(y_file)
     
 from tensorflow.keras.utils import to_categorical
