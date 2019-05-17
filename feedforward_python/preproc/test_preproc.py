@@ -77,19 +77,17 @@ layer0 = [file_reader2(i,"layer 0") for i in files_in_order]
 
 layer0 = np.concatenate(layer0,axis=None)
 
-nones = np.where(layer0== None)
-
-layer0 = [np.delete(layer0, i) for i in nones]
-
-layer0 = np.concatenate(layer0,axis=None)
-
 empties = np.where([np.array(i).shape!=(17,24) for i in layer0])
 
-layer0 = [np.delete(layer0, i) for i in empties]
+layer0 = np.delete(layer0, empties)
 
-layer0 = np.concatenate(layer0,axis=None)
+#layer0 = np.concatenate(layer0,axis=None)
 
 layer0 = np.stack(layer0)
+
+pdgCode = np.delete(pdgCode, empties)
+
+
 
 
 #####################################

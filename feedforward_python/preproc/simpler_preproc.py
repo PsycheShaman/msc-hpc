@@ -51,44 +51,129 @@ def file_reader2(i,l):
 
 print("pdg........................................................................................")
         
-pdgCode = [file_reader1(i) for i in files_in_order]
+pdgCode0 = [file_reader1(i) for i in files_in_order]
 
 import numpy as np
 
-pdgCode = np.concatenate(pdgCode).ravel()
-
 print("layer 0........................................................................................")
 
+pdgCode0 = np.concatenate(pdgCode0).ravel()
+
 layer0 = [file_reader2(i,"layer 0") for i in files_in_order]
+
+layer0 = np.concatenate(layer0,axis=None)
+
+empties = np.where([np.array(i).shape!=(17,24) for i in layer0])
+
+layer0 = np.delete(layer0, empties)
+
+layer0 = np.stack(layer0)
+
+pdgCode0 = np.delete(pdgCode0, empties)
 
 print("layer 1........................................................................................")
 
 layer1 = [file_reader2(i,"layer 1") for i in files_in_order]
+
+pdgCode1 = [file_reader1(i) for i in files_in_order]
+
+pdgCode1 = np.concatenate(pdgCode1).ravel()
+
+layer1 = np.concatenate(layer1,axis=None)
+
+empties = np.where([np.array(i).shape!=(17,24) for i in layer1])
+
+layer1 = np.delete(layer1, empties)
+
+layer1 = np.stack(layer1)
+
+pdgCode1 = np.delete(pdgCode1, empties)
+
+
 
 
 print("layer 2........................................................................................")
 
 layer2 = [file_reader2(i,"layer 2") for i in files_in_order]
 
+pdgCode2 = [file_reader1(i) for i in files_in_order]
+
+pdgCode2 = np.concatenate(pdgCode2).ravel()
+
+layer2 = np.concatenate(layer2,axis=None)
+
+empties = np.where([np.array(i).shape!=(17,24) for i in layer2])
+
+layer2 = np.delete(layer2, empties)
+
+layer2 = np.stack(layer2)
+
+pdgCode2 = np.delete(pdgCode2, empties)
+
 
 print("layer 3........................................................................................")
 
 layer3 = [file_reader2(i,"layer 3") for i in files_in_order]
+
+pdgCode3 = [file_reader1(i) for i in files_in_order]
+
+pdgCode3 = np.concatenate(pdgCode3).ravel()
+
+layer3 = np.concatenate(layer3,axis=None)
+
+empties = np.where([np.array(i).shape!=(17,24) for i in layer3])
+
+layer3 = np.delete(layer3, empties)
+
+layer3 = np.stack(layer3)
+
+pdgCode3 = np.delete(pdgCode3, empties)
 
 
 print("layer 4........................................................................................")
 
 layer4 = [file_reader2(i,"layer 4") for i in files_in_order]
 
+pdgCode4 = [file_reader1(i) for i in files_in_order]
+
+pdgCode4 = np.concatenate(pdgCode4).ravel()
+
+layer4 = np.concatenate(layer4,axis=None)
+
+empties = np.where([np.array(i).shape!=(17,24) for i in layer4])
+
+layer4 = np.delete(layer4, empties)
+
+layer4 = np.stack(layer4)
+
+pdgCode4 = np.delete(pdgCode4, empties)
+
 
 print("layer 5........................................................................................")
 
 layer5 = [file_reader2(i,"layer 5") for i in files_in_order]
 
+pdgCode5 = [file_reader1(i) for i in files_in_order]
+
+pdgCode5 = np.concatenate(pdgCode5).ravel()
+
+layer5 = np.concatenate(layer5,axis=None)
+
+empties = np.where([np.array(i).shape!=(17,24) for i in layer5])
+
+layer5 = np.delete(layer5, empties)
+
+layer5 = np.stack(layer5)
+
+pdgCode5 = np.delete(pdgCode5, empties)
 
 print("mapped out files to useful elements....................................................................")
 
-import numpy as np
+print("concatenate pdgs and layers....................................................................")
+
+pdgCode = np.concatenate([pdgCode0,pdgCode1,pdgCode2,pdgCode3,pdgCode5]).ravel
+
+x = np.vstack([layer0,layer1,layer2,layer3,layer4,layer5])
 
 def pdg_code_to_elec(i):
     if np.abs(i)==11:
@@ -96,106 +181,19 @@ def pdg_code_to_elec(i):
     else:
         return(0)
         
-electron = [pdg_code_to_elec(i) for i in pdgCode]
+y = [pdg_code_to_elec(i) for i in pdgCode]
 
 print("mapped out electrons....................................................................")
 
-print(electron)
+#print(y)
 
-def x_0_getter(i):
-    import numpy as np
+print("y.shape....................................................................")
 
-    layer0 = i
-    if type(layer0)==type(None) or np.array(layer0).shape==(17,0):
-        pass
-    else:
-        x0 = np.array(layer0)
-        x0 = [i for i in x0 if i is not None]
-        x0 = [i for i in x0 if i is not []]
-        x0=np.array(x0)
-        x0.shape = (int(len(x)/17),24)
-        x0 = np.sum(x0,axis=0)
+print(y.shape)
 
-    if 'x0' in locals():
-        return(x0)
-#
+print("x.shape....................................................................")
 
-print("get x&y from layers........................................................................................")
-
-def y_0_getter(electron,i):
-    import numpy as np
-
-    layer0 = i
-    if type(layer0)==type(None) or np.array(layer0).shape==(17,0):
-        pass
-    else:
-        y0 = np.array(electron)
-
-    if 'y0' in locals():
-        return(y0)
-
-print("layer 0........................................................................................")
-
-x0 = [x_0_getter(i) for i in layer0]
-y0 = [y_0_getter(electron,i) for i in layer0]
-
-print("x0........................................................................................")
-
-print(x0)
-
-print("y0........................................................................................")
-
-print(y0)
-
-print("layer 1........................................................................................")
-
-x1 = [x_0_getter(i) for i in layer1]
-y1 = [y_0_getter(electron,i) for i in layer1]
-
-print("layer 2........................................................................................")
-
-x2 = [x_0_getter(i) for i in layer2]
-y2 = [y_0_getter(electron,i) for i in layer2]
-
-print("layer 3........................................................................................")
-
-x3 = [x_0_getter(i) for i in layer3]
-y3 = [y_0_getter(electron,i) for i in layer3]
-
-print("layer 4........................................................................................")
-
-x4 = [x_0_getter(i) for i in layer4]
-y4 = [y_0_getter(electron,i) for i in layer4]
-
-print("layer 5........................................................................................")
-
-x5 = [x_0_getter(i) for i in layer5]
-y5 = [y_0_getter(electron,i) for i in layer5]
-
-print("concatenating........................................................................................")
-
-x = np.concatenate((x0,x1,x2,x3,x4,x5),axis=None)
-
-x = x.flatten()
-
-x = [i for i in x if i is not None]
-
-x = np.concatenate(x).ravel()
-
-y = np.concatenate((y0,y1,y2,y3,y4,y5),axis=None)
-
-y = y.flatten()
-
-y = [i for i in y if i is not None]
-
-y = np.concatenate(y).ravel()
-
-print("reshape x and y........................................................................................")
-
-import numpy as np
-
-x = np.reshape(x,(len(y),24))
-x = x.astype('float32')
+print(x.shape)
 
 mu = np.mean(x)
 x /= mu
