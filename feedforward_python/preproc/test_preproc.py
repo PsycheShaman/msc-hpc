@@ -87,6 +87,8 @@ empties = np.where([np.array(i).shape!=(17,24) for i in layer0])
 
 layer0 = [np.delete(layer0, i) for i in empties]
 
+layer0 = np.concatenate(layer0,axis=None)
+
 layer0 = np.stack(layer0)
 
 
