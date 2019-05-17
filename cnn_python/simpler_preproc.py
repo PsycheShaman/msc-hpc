@@ -175,8 +175,6 @@ pdgCode = np.concatenate([pdgCode0,pdgCode1,pdgCode2,pdgCode3,pdgCode5]).ravel()
 
 x = np.vstack([layer0,layer1,layer2,layer3,layer4,layer5])
 
-np.array([np.sum(i,axis=0) for i in layer0])
-
 def pdg_code_to_elec(i):
     if np.abs(i)==11:
         return(1)
