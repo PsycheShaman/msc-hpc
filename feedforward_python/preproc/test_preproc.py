@@ -1,24 +1,34 @@
 print("==============================================================================================")
 
-import argparse
+#import argparse
+#
+#parser = argparse.ArgumentParser()
+#parser.add_argument("run", help="enter the specific run you need to process",type=str)
+#args = parser.parse_args()
+#
+#run = str(args.run)
 
-parser = argparse.ArgumentParser()
-parser.add_argument("run", help="enter the specific run you need to process",type=str)
-args = parser.parse_args()
+#run = 'testDict'
+#
+#print("starting........................................................................................")
+#
+#import glob
+#
+#print("imported glob........................................................................................")
+#
+#files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-hpc\\" + run + '\\**\\*.txt', recursive=True)
+#
+#a = list(range(1,len(files)-1))
 
-run = str(args.run)
+import os
 
-print("starting........................................................................................")
+p = os.getcwd()+'\\Documents\\msc-hpc'
 
-import glob
+os.chdir(p)
 
-print("imported glob........................................................................................")
+p = os.join
 
-files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/unprocessed/" + run + '/**/*.txt', recursive=True)
-
-a = list(range(1,len(files)-1))
-
-files_in_order = [files[i] for i in a]
+files_in_order = ['testDict.txt','testDict.txt']
 
 print("read files list........................................................................................")
 
@@ -59,7 +69,28 @@ pdgCode = np.concatenate(pdgCode).ravel()
 
 print("layer 0........................................................................................")
 
+##################################
+
 layer0 = [file_reader2(i,"layer 0") for i in files_in_order]
+
+#layer0 = np.array(layer0)
+
+layer0 = np.concatenate(layer0,axis=None)
+
+nones = np.where(layer0== None)
+
+layer0 = [np.delete(layer0, i) for i in nones]
+
+layer0 = np.concatenate(layer0,axis=None)
+
+empties = np.where([np.array(i).shape!=(17,24) for i in layer0])
+
+layer0 = [np.delete(layer0, i) for i in empties]
+
+layer0 = np.stack(layer0)
+
+
+#####################################
 
 print("layer 1........................................................................................")
 
