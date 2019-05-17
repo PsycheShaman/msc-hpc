@@ -108,9 +108,9 @@ def x_0_getter(i):
         pass
     else:
         x0 = np.array(layer0)
-        x = [i for i in x if i is not None]
-        x=np.array(x)
-        x.shape = (17,24)
+        x0 = [i for i in x0 if i is not None]
+        x0=np.array(x0)
+        x0.shape = (17,24)
         x0 = np.sum(x0,axis=0)
 
     if 'x0' in locals():
