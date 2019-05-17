@@ -171,7 +171,7 @@ print("mapped out files to useful elements......................................
 
 print("concatenate pdgs and layers....................................................................")
 
-pdgCode = np.concatenate([pdgCode0,pdgCode1,pdgCode2,pdgCode3,pdgCode5]).ravel()
+pdgCode = np.concatenate([pdgCode0,pdgCode1,pdgCode2,pdgCode3,pdgCode4,pdgCode5]).ravel()
 
 x = np.vstack([layer0,layer1,layer2,layer3,layer4,layer5])
 
