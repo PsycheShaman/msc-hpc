@@ -183,7 +183,7 @@ def pdg_code_to_elec(i):
     else:
         return(0)
         
-y = [pdg_code_to_elec(i) for i in pdgCode]
+y = np.array([pdg_code_to_elec(i) for i in pdgCode])
 
 print("mapped out electrons....................................................................")
 
@@ -212,10 +212,10 @@ print("pickling files...........................................................
 
 import pickle
 
-with open('/scratch/vljchr004/data/msc-thesis-data/x_' + run + '.pkl', 'wb') as x_file:
+with open('/scratch/vljchr004/data/msc-thesis-data/ff/x_' + run + '.pkl', 'wb') as x_file:
   pickle.dump(x, x_file)
 
-with open('/scratch/vljchr004/data/msc-thesis-data/y_' + run + '.pkl', 'wb') as y_file:
+with open('/scratch/vljchr004/data/msc-thesis-data/ff/y_' + run + '.pkl', 'wb') as y_file:
   pickle.dump(y, y_file)
 
 
