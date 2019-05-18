@@ -15,7 +15,7 @@ print("read files list..........................................................
 
 from ast import literal_eval
 
-def file_reader1(i):
+def file_reader1(i,l):
     di = open(i)
     di = di.read()
     if di == "}":
@@ -25,7 +25,12 @@ def file_reader1(i):
         di = literal_eval(di)
         ki = list(di.keys())
         pdgCode = [di.get(k).get('pdgCode') for k in ki]
-        return(pdgCode)
+        l0 = [di.get(k).get(l) for k in ki]
+        if(len(l0)!=len(pdgCode)):
+            print(i)
+            pass
+        else:
+            return(pdgCode)
         
 def file_reader2(i,l):
     di = open(i)
@@ -37,12 +42,16 @@ def file_reader2(i,l):
         di = literal_eval(di)
         ki = list(di.keys())
         layer = [di.get(k).get(l) for k in ki]
-#        y = [i for i in y if i is not None]
-        return(layer)
+        pdgCode = [di.get(k).get('pdgCode') for k in ki]
+        if(len(layer)!=len(pdgCode)):
+            print(i)
+            pass
+        else:
+            return(layer)
 
 print("pdg........................................................................................")
         
-pdgCode0 = [file_reader1(i) for i in files_in_order]
+pdgCode0 = [file_reader1(i,"layer0") for i in files_in_order]
 
 import numpy as np
 
