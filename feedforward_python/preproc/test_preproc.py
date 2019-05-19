@@ -15,7 +15,7 @@ print("read files list..........................................................
 
 from ast import literal_eval
 
-def file_reader1(i,l):
+def file_reader1(i):
     di = open(i)
     di = di.read()
     if di == "}":
@@ -25,12 +25,7 @@ def file_reader1(i,l):
         di = literal_eval(di)
         ki = list(di.keys())
         pdgCode = [di.get(k).get('pdgCode') for k in ki]
-        l0 = [di.get(k).get(l) for k in ki]
-        if(len(l0)!=len(pdgCode)):
-            print(i)
-            pass
-        else:
-            return(pdgCode)
+        return(pdgCode)
         
 def file_reader2(i,l):
     di = open(i)
@@ -42,26 +37,47 @@ def file_reader2(i,l):
         di = literal_eval(di)
         ki = list(di.keys())
         layer = [di.get(k).get(l) for k in ki]
-        pdgCode = [di.get(k).get('pdgCode') for k in ki]
-        if(len(layer)!=len(pdgCode)):
-            print(i)
-            pass
-        else:
-            return(layer)
+        return(layer)
 
 print("pdg........................................................................................")
         
-pdgCode0 = [file_reader1(i,"layer0") for i in files_in_order]
+pdgCode0 = [file_reader1(i) for i in files_in_order]
 
 import numpy as np
 
 print("layer 0........................................................................................")
 
-pdgCode0 = np.concatenate(pdgCode0).ravel()
+#pdgCode0 = np.concatenate(pdgCode0).ravel()
+
+#########
+
+#len(np.concatenate(pdgCode0))
+#
+#len(np.concatenate(pdgCode0).ravel())
+#
+#len(np.concatenate(layer0,axis=None))
+#
+#len([i for i in np.concatenate(layer0,axis=None) if i is not None])
+#
+#len([i for i in np.concatenate(pdgCode0).ravel() if i is not None])
+#
+#len(np.where([np.array(i).shape!=(17,24) for i in np.concatenate(layer0,axis=None)]))
+
+
+###########
 
 layer0 = [file_reader2(i,"layer 0") for i in files_in_order]
 
+
+###################################################################
+
+np.where([len(pdgCode0[i])==len(layer0[i]) for i in range(len(pdgCode0))]==False)
+
+
+
 layer0 = np.concatenate(layer0,axis=None)
+
+layer0 = np.stack(layer0)
 
 empties = np.where([np.array(i).shape!=(17,24) for i in layer0])
 
