@@ -1,2 +1,0 @@
-/home/vljchr004/msc-hpc/feedforward_python/preproc/simpler_preproc.py:72: DeprecationWarning: in the future out of bounds indices will raise an error instead of being ignored by `numpy.delete`.
-  pdgCode0 = np.delete(pdgCode0, empties)
