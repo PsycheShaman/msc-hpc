@@ -46,7 +46,6 @@ def file_reader2(i,l):
         di = literal_eval(di)
         ki = list(di.keys())
         layer = [di.get(k).get(l) for k in ki]
-#        y = [i for i in y if i is not None]
         return(layer)
 
 print("pdg........................................................................................")
@@ -57,11 +56,15 @@ import numpy as np
 
 print("layer 0........................................................................................")
 
-pdgCode0 = np.concatenate(pdgCode0).ravel()
+#pdgCode0 = np.concatenate(pdgCode0).ravel()
 
 layer0 = [file_reader2(i,"layer 0") for i in files_in_order]
 
-layer0 = np.concatenate(layer0,axis=None)
+#layer0 = np.concatenate(layer0,axis=None)
+
+layer0 = np.array([item for sublist in layer0 for item in sublist])
+
+pdgCode0 = np.array([item for sublist in pdgCode0 for item in sublist])
 
 empties = np.where([np.array(i).shape!=(17,24) for i in layer0])
 
@@ -77,9 +80,9 @@ layer1 = [file_reader2(i,"layer 1") for i in files_in_order]
 
 pdgCode1 = [file_reader1(i) for i in files_in_order]
 
-pdgCode1 = np.concatenate(pdgCode1).ravel()
+layer1 = np.array([item for sublist in layer1 for item in sublist])
 
-layer1 = np.concatenate(layer1,axis=None)
+pdgCode1 = np.array([item for sublist in pdgCode1 for item in sublist])
 
 empties = np.where([np.array(i).shape!=(17,24) for i in layer1])
 
@@ -98,9 +101,9 @@ layer2 = [file_reader2(i,"layer 2") for i in files_in_order]
 
 pdgCode2 = [file_reader1(i) for i in files_in_order]
 
-pdgCode2 = np.concatenate(pdgCode2).ravel()
+layer2 = np.array([item for sublist in layer2 for item in sublist])
 
-layer2 = np.concatenate(layer2,axis=None)
+pdgCode2 = np.array([item for sublist in pdgCode2 for item in sublist])
 
 empties = np.where([np.array(i).shape!=(17,24) for i in layer2])
 
@@ -117,9 +120,9 @@ layer3 = [file_reader2(i,"layer 3") for i in files_in_order]
 
 pdgCode3 = [file_reader1(i) for i in files_in_order]
 
-pdgCode3 = np.concatenate(pdgCode3).ravel()
+layer3 = np.array([item for sublist in layer3 for item in sublist])
 
-layer3 = np.concatenate(layer3,axis=None)
+pdgCode3 = np.array([item for sublist in pdgCode3 for item in sublist])
 
 empties = np.where([np.array(i).shape!=(17,24) for i in layer3])
 
@@ -136,9 +139,9 @@ layer4 = [file_reader2(i,"layer 4") for i in files_in_order]
 
 pdgCode4 = [file_reader1(i) for i in files_in_order]
 
-pdgCode4 = np.concatenate(pdgCode4).ravel()
+layer4 = np.array([item for sublist in layer4 for item in sublist])
 
-layer4 = np.concatenate(layer4,axis=None)
+pdgCode4 = np.array([item for sublist in pdgCode4 for item in sublist])
 
 empties = np.where([np.array(i).shape!=(17,24) for i in layer4])
 
@@ -155,9 +158,9 @@ layer5 = [file_reader2(i,"layer 5") for i in files_in_order]
 
 pdgCode5 = [file_reader1(i) for i in files_in_order]
 
-pdgCode5 = np.concatenate(pdgCode5).ravel()
+layer5 = np.array([item for sublist in layer5 for item in sublist])
 
-layer5 = np.concatenate(layer5,axis=None)
+pdgCode5 = np.array([item for sublist in pdgCode5 for item in sublist])
 
 empties = np.where([np.array(i).shape!=(17,24) for i in layer5])
 
@@ -195,9 +198,9 @@ print("x.shape..................................................................
 
 print(x.shape)
 
-mu = np.mean(x)
-
-x = np.true_divide(x,mu)
+#mu = np.mean(x)
+#
+#x = np.true_divide(x,mu)
 
 #x /= mu
 
