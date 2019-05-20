@@ -1,17 +1,11 @@
 import glob
 
-print("imported glob........................................................................................")
-
 files = glob.glob('C:\\Users\\gerhard\\Documents\\msc-thesis-data-master\\msc-thesis-data-master\\unprocessed\\000265342' + '\\**\\*.txt', recursive=True)
 
 a = list(range(1,len(files)-1))
 
 
 files_in_order = [files[i] for i in a]
-
-print("read files list........................................................................................")
-
-print("read files list........................................................................................")
 
 from ast import literal_eval
 
@@ -26,7 +20,7 @@ def file_reader1(i):
         ki = list(di.keys())
         pdgCode = [di.get(k).get('pdgCode') for k in ki]
         return(pdgCode)
-        
+
 def file_reader2(i,l):
     di = open(i)
     di = di.read()
@@ -38,54 +32,33 @@ def file_reader2(i,l):
         ki = list(di.keys())
         layer = [di.get(k).get(l) for k in ki]
         return(layer)
-
-print("pdg........................................................................................")
         
 pdgCode0 = [file_reader1(i) for i in files_in_order]
 
-import numpy as np
-
-print("layer 0........................................................................................")
-
-#pdgCode0 = np.concatenate(pdgCode0).ravel()
-
-#########
-
-#len(np.concatenate(pdgCode0))
-#
-#len(np.concatenate(pdgCode0).ravel())
-#
-#len(np.concatenate(layer0,axis=None))
-#
-#len([i for i in np.concatenate(layer0,axis=None) if i is not None])
-#
-#len([i for i in np.concatenate(pdgCode0).ravel() if i is not None])
-#
-#len(np.where([np.array(i).shape!=(17,24) for i in np.concatenate(layer0,axis=None)]))
-
-
-###########
-
 layer0 = [file_reader2(i,"layer 0") for i in files_in_order]
 
+import numpy as np
 
-###################################################################
+layer0 = np.array([item for sublist in layer0 for item in sublist])
 
-np.where([len(pdgCode0[i])==len(layer0[i]) for i in range(len(pdgCode0))]==False)
-
-
-
-layer0 = np.concatenate(layer0,axis=None)
-
-layer0 = np.stack(layer0)
+pdgCode0 = np.array([item for sublist in pdgCode0 for item in sublist])
 
 empties = np.where([np.array(i).shape!=(17,24) for i in layer0])
+
+print(layer0.shape)
+print(pdgCode0.shape)
 
 layer0 = np.delete(layer0, empties)
 
 layer0 = np.stack(layer0)
 
 pdgCode0 = np.delete(pdgCode0, empties)
+
+print(layer0.shape)
+print(pdgCode0.shape)
+
+x = np.vstack([np.array([np.sum(i,axis=0) for i in layer0]),\
+               np.array([np.sum(i,axis=0) for i in layer0])])
 
 print("layer 1........................................................................................")
 
