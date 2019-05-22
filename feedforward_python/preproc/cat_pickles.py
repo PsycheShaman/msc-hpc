@@ -48,7 +48,6 @@ for i in y_files[1:]:
     with open(i,'rb') as y_file:
         yi = pickle.load(y_file)
         y = np.concatenate((y,yi),axis=None)
- 
 
         
 print(x.shape)
