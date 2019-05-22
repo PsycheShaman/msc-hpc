@@ -1,19 +1,11 @@
 print("==============================================================================================")
 
-import argparse
-
-parser = argparse.ArgumentParser()
-parser.add_argument("run", help="enter the specific run you need to process",type=str)
-args = parser.parse_args()
-
-run = str(args.run)
-
 import pickle
  
-with open('/scratch/vljchr004/data/msc-thesis-data/x_000' + run + '.pkl', 'rb') as x_file:
+with open('/scratch/vljchr004/data/msc-thesis-data/ff/x.pkl', 'rb') as x_file:
     x = pickle.load(x_file)
 
-with open('/scratch/vljchr004/data/msc-thesis-data/y_000' + run + '.pkl', 'rb') as y_file:
+with open('/scratch/vljchr004/data/msc-thesis-data/ff/y.pkl', 'rb') as y_file:
     y = pickle.load(y_file)
     
 from tensorflow.keras.utils import to_categorical
@@ -73,7 +65,7 @@ plt.title('model accuracy')
 plt.ylabel('accuracy')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
-plt.show()
+plt.savefig('/home/vljchr004/msc-hpc/feedforward_python/fig/feed_forward_1_history1.png', bbox_inches='tight')
 # summarize history for loss
 plt.plot(history.history['loss'])
 plt.plot(history.history['val_loss'])
@@ -81,7 +73,7 @@ plt.title('model loss')
 plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
-plt.savefig('/home/vljchr004/msc-hpc/feedforward_python/fig/feed_forward_1_history.png', bbox_inches='tight')
+plt.savefig('/home/vljchr004/msc-hpc/feedforward_python/fig/feed_forward_1_history2.png', bbox_inches='tight')
 
 model1.probs = model1.predict_proba(x_test)
 
