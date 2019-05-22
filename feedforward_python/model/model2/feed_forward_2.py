@@ -75,6 +75,9 @@ plt.ylabel('accuracy')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
 plt.savefig('/home/vljchr004/msc-hpc/feedforward_python/fig/feed_forward_2_history1.png', bbox_inches='tight')
+
+plt.close()
+
 # summarize history for loss
 plt.plot(history.history['loss'])
 plt.plot(history.history['val_loss'])
