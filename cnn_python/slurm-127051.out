@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/vljchr004/msc-hpc/cnn_python/simpler_preproc.py", line 220, in <module>
+    pickle.dump(x, x_file)
+OverflowError: cannot serialize a bytes object larger than 4 GiB
