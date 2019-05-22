@@ -9,17 +9,17 @@ print("=========================================================================
 
 import pickle
  
-#with open('/scratch/vljchr004/data/msc-thesis-data/cnn/x.pkl', 'rb') as x_file:
-#    x = pickle.load(x_file)
-#
-#with open('/scratch/vljchr004/data/msc-thesis-data/cnn/y.pkl', 'rb') as y_file:
-#    y = pickle.load(y_file)
-
-with open('C:/Users/gerhard/Documents/msc-thesis-data/cnn/x_000265309.pkl', 'rb') as x_file:
+with open('/scratch/vljchr004/data/msc-thesis-data/cnn/x.pkl', 'rb') as x_file:
     x = pickle.load(x_file)
 
-with open('C:/Users/gerhard/Documents/msc-thesis-data/cnn/y_000265309.pkl', 'rb') as y_file:
+with open('/scratch/vljchr004/data/msc-thesis-data/cnn/y.pkl', 'rb') as y_file:
     y = pickle.load(y_file)
+
+#with open('C:/Users/gerhard/Documents/msc-thesis-data/cnn/x_000265309.pkl', 'rb') as x_file:
+#    x = pickle.load(x_file)
+#
+#with open('C:/Users/gerhard/Documents/msc-thesis-data/cnn/y_000265309.pkl', 'rb') as y_file:
+#    y = pickle.load(y_file)
     
 x = x.reshape(x.shape[0],x.shape[1],x.shape[2],1)
     
@@ -78,10 +78,10 @@ plt.title('model accuracy')
 plt.ylabel('accuracy')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
-#plt.savefig('/home/vljchr004/msc-hpc/cnn_python/fig/cnn_1_history1.png', bbox_inches='tight')
+plt.savefig('/home/vljchr004/msc-hpc/cnn_python/fig/cnn_1_history1.png', bbox_inches='tight')
 
-plt.savefig('C:/Users/gerhard/Documents/msc-hpc/cnn_python/fig/test/cnn_1_history1.png', bbox_inches='tight')
-
+#plt.savefig('C:/Users/gerhard/Documents/msc-hpc/cnn_python/fig/test/cnn_1_history1.png', bbox_inches='tight')
+plt.close()
 
 # summarize history for loss
 plt.plot(history.history['loss'])
@@ -90,24 +90,24 @@ plt.title('model loss')
 plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
-#plt.savefig('/home/vljchr004/msc-hpc/cnn_python/fig/cnn_1_history2.png', bbox_inches='tight')
+plt.savefig('/home/vljchr004/msc-hpc/cnn_python/fig/cnn_1_history2.png', bbox_inches='tight')
 
-plt.savefig('C:/Users/gerhard/Documents/msc-hpc/cnn_python/fig/test/cnn_1_history2.png', bbox_inches='tight')
+#plt.savefig('C:/Users/gerhard/Documents/msc-hpc/cnn_python/fig/test/cnn_1_history2.png', bbox_inches='tight')
 
 model.probs = model.predict_proba(x_test)
 
 import numpy as np
-#np.savetxt("/home/vljchr004/msc-hpc/cnn_python/results/cnn_1_results.csv", np.array(model.probs), fmt="%s")
+np.savetxt("/home/vljchr004/msc-hpc/cnn_python/results/cnn_1_results.csv", np.array(model.probs), fmt="%s")
 
-np.savetxt("C:/Users/gerhard/Documents/msc-hpc/cnn_python/results/test/cnn_1_results.csv", np.array(model.probs), fmt="%s")
+#np.savetxt("C:/Users/gerhard/Documents/msc-hpc/cnn_python/results/test/cnn_1_results.csv", np.array(model.probs), fmt="%s")
 
-#np.savetxt("/home/vljchr004/msc-hpc/cnn_python/results/cnn_1_y_test.csv", np.array(y_test), fmt="%s")
+np.savetxt("/home/vljchr004/msc-hpc/cnn_python/results/cnn_1_y_test.csv", np.array(y_test), fmt="%s")
 
-np.savetxt("C:/Users/gerhard/Documents/msc-hpc/cnn_python/results/test/cnn_1_y_test.csv", np.array(y_test), fmt="%s")
+#np.savetxt("C:/Users/gerhard/Documents/msc-hpc/cnn_python/results/test/cnn_1_y_test.csv", np.array(y_test), fmt="%s")
 
-#model.save('/home/vljchr004/msc-hpc/cnn_python/cnn1.h5')  # creates a HDF5 file 'my_model.h5'
+model.save('/home/vljchr004/msc-hpc/cnn_python/cnn1.h5')  # creates a HDF5 file 'my_model.h5'
 
-model.save('C:/Users/gerhard/Documents/msc-hpc/cnn_python/results/test/cnn1.h5')
+#model.save('C:/Users/gerhard/Documents/msc-hpc/cnn_python/results/test/cnn1.h5')
 
 del model
 
