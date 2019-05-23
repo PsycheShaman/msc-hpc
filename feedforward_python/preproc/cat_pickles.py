@@ -15,11 +15,11 @@ import numpy as np
 
 print("imported glob, np........................................................................................")
 
-x_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/ff/x_*.pkl")
-y_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/ff/y_*.pkl")
+#x_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/ff/x_*.pkl")
+#y_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/ff/y_*.pkl")
 
-#x_files = glob.glob("C:/Users/gerhard/Documents/msc-thesis-data/ff/x_*.pkl")
-#y_files = glob.glob("C:/Users/gerhard/Documents/msc-thesis-data/ff/y_*.pkl")
+x_files = glob.glob("C:/Users/gerhard/Documents/msc-thesis-data/ff/x_*.pkl")
+y_files = glob.glob("C:/Users/gerhard/Documents/msc-thesis-data/ff/y_*.pkl")
 
 import pickle
 
@@ -48,6 +48,28 @@ for i in y_files[1:]:
     with open(i,'rb') as y_file:
         yi = pickle.load(y_file)
         y = np.concatenate((y,yi),axis=None)
+        
+nz = np.array([np.count_nonzero(i) for i in x])
+
+zeros = np.where(nz==0)
+
+x = np.delete(x,zeros,axis=0)
+y = np.delete(y,zeros)
+
+#oversample electrons
+
+elec = np.where(y==1)
+pion = np.where(y!=1)
+
+electrons_x = x[elec,:,:]
+
+electrons_y = y[elec]
+
+electrons_x = np.squeeze(electrons_x)
+
+x = np.concatenate((electrons_x,x,electrons_x),axis=0)
+
+y = np.concatenate((electrons_y,y,electrons_y),axis=None)
 
         
 print(x.shape)
