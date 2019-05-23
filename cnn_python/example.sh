@@ -41,4 +41,4 @@ module load python/anaconda-python-3.7
 
 # Your science stuff goes here...
 
-python -u /home/vljchr004/msc-hpc/cnn_python/simpler_preproc.py '000265344' > out2.txt
+python -u /home/vljchr004/msc-hpc/cnn_python/simpler_preproc.py '000265419' > out.txt
