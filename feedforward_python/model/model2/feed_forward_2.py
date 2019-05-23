@@ -54,7 +54,7 @@ y = np.delete(y,zeros)
 elec = np.where(y==1)
 pion = np.where(y!=1)
 
-electrons_x = x[elec,:,:]
+electrons_x = x[elec,:]
 
 electrons_y = y[elec]
 
