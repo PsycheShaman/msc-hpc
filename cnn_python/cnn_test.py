@@ -8,6 +8,8 @@ Created on Wed May 22 18:01:37 2019
 print("==============================================================================================")
 
 import pickle
+
+import numpy as np
  
 #with open('/scratch/vljchr004/data/msc-thesis-data/cnn/x.pkl', 'rb') as x_file:
 #    x = pickle.load(x_file)
@@ -20,6 +22,28 @@ with open('C:/Users/gerhard/Documents/msc-thesis-data/cnn/x_000265309.pkl', 'rb'
 
 with open('C:/Users/gerhard/Documents/msc-thesis-data/cnn/y_000265309.pkl', 'rb') as y_file:
     y = pickle.load(y_file)
+    
+nz = np.array([np.count_nonzero(i) for i in x])
+
+zeros = np.where(nz==0)
+
+x = np.delete(x,zeros,axis=0)
+y = np.delete(y,zeros)
+
+elec = np.where(y==1)
+pion = np.where(y!=1)
+
+int(elec[0].shape[0])/int(pion[0].shape[0])
+
+electrons_x = x[elec,:,:]
+
+electrons_y = y[elec]
+
+electrons_x = np.squeeze(electrons_x)
+
+x = np.concatenate((electrons_x,x,electrons_x),axis=0)
+
+y = np.concatenate((electrons_y,y,electrons_y),axis=None)
     
 x = x.reshape(x.shape[0],x.shape[1],x.shape[2],1)
     
@@ -39,7 +63,7 @@ from tensorflow.keras.layers import Dense, Dropout, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D
 
 num_classes = 2
-epochs = 100
+epochs = 500
 
 y_train = tensorflow.keras.utils.to_categorical(y_train, num_classes)
 y_test = tensorflow.keras.utils.to_categorical(y_test, num_classes)
@@ -80,8 +104,9 @@ plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
 #plt.savefig('/home/vljchr004/msc-hpc/cnn_python/fig/cnn_1_history1.png', bbox_inches='tight')
 
-plt.savefig('C:/Users/gerhard/Documents/msc-hpc/cnn_python/fig/test/cnn_1_history1.png', bbox_inches='tight')
+plt.savefig('C:/Users/gerhard/Documents/msc-hpc/cnn_python/fig/test/zero_del_cnn_1_history1_oversample.png', bbox_inches='tight')
 
+plt.close()
 
 # summarize history for loss
 plt.plot(history.history['loss'])
@@ -92,22 +117,22 @@ plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
 #plt.savefig('/home/vljchr004/msc-hpc/cnn_python/fig/cnn_1_history2.png', bbox_inches='tight')
 
-plt.savefig('C:/Users/gerhard/Documents/msc-hpc/cnn_python/fig/test/cnn_1_history2.png', bbox_inches='tight')
+plt.savefig('C:/Users/gerhard/Documents/msc-hpc/cnn_python/fig/test/zero_del_cnn_1_history2_oversample.png', bbox_inches='tight')
 
 model.probs = model.predict_proba(x_test)
 
 import numpy as np
 #np.savetxt("/home/vljchr004/msc-hpc/cnn_python/results/cnn_1_results.csv", np.array(model.probs), fmt="%s")
 
-np.savetxt("C:/Users/gerhard/Documents/msc-hpc/cnn_python/results/test/cnn_1_results.csv", np.array(model.probs), fmt="%s")
+np.savetxt("C:/Users/gerhard/Documents/msc-hpc/cnn_python/results/test/zero_del_cnn_1_results_oversample.csv", np.array(model.probs), fmt="%s")
 
 #np.savetxt("/home/vljchr004/msc-hpc/cnn_python/results/cnn_1_y_test.csv", np.array(y_test), fmt="%s")
 
-np.savetxt("C:/Users/gerhard/Documents/msc-hpc/cnn_python/results/test/cnn_1_y_test.csv", np.array(y_test), fmt="%s")
+np.savetxt("C:/Users/gerhard/Documents/msc-hpc/cnn_python/results/test/zero_del_cnn_1_y_test_oversample.csv", np.array(y_test), fmt="%s")
 
 #model.save('/home/vljchr004/msc-hpc/cnn_python/cnn1.h5')  # creates a HDF5 file 'my_model.h5'
 
-model.save('C:/Users/gerhard/Documents/msc-hpc/cnn_python/results/test/cnn1.h5')
+model.save('C:/Users/gerhard/Documents/msc-hpc/cnn_python/results/test/zero_del_cnn1_oversample.h5')
 
 del model
 

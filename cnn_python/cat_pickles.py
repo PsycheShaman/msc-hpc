@@ -15,11 +15,11 @@ import numpy as np
 
 print("imported glob, np........................................................................................")
 
-x_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/x_*.pkl")
-y_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/y_*.pkl")
+#x_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/x_*.pkl")
+#y_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/y_*.pkl")
 
-#x_files = glob.glob("C:/Users/gerhard/Documents/msc-thesis-data/cnn/x_*.pkl")
-#y_files = glob.glob("C:/Users/gerhard/Documents/msc-thesis-data/cnn/y_*.pkl")
+x_files = glob.glob("C:/Users/gerhard/Documents/msc-thesis-data/cnn/x_*.pkl")
+y_files = glob.glob("C:/Users/gerhard/Documents/msc-thesis-data/cnn/y_*.pkl")
 
 import pickle
 
@@ -35,19 +35,45 @@ with open(y_files[0], 'rb') as y_file0:
    
 print("recursively adding x pickles........................................................................................")
 
-for i in x_files[1:]:
-#for i in x_files[1:2]:
+#for i in x_files[1:]:
+for i in x_files[1:2]:
     with open(i,'rb') as x_file:
         xi = pickle.load(x_file)
         x = np.concatenate((x,xi),axis=0)
         
 print("recursively adding y pickles........................................................................................")
         
-for i in y_files[1:]:
-#for i in y_files[1:2]:
+#for i in y_files[1:]:
+for i in y_files[1:2]:
     with open(i,'rb') as y_file:
         yi = pickle.load(y_file)
         y = np.concatenate((y,yi),axis=None)
+
+#remove 0 elements
+    
+nz = np.array([np.count_nonzero(i) for i in x])
+
+zeros = np.where(nz==0)
+
+x = np.delete(x,zeros,axis=0)
+y = np.delete(y,zeros)
+
+#oversample electrons
+
+elec = np.where(y==1)
+pion = np.where(y!=1)
+
+int(elec[0].shape[0])/int(pion[0].shape[0])
+
+electrons_x = x[elec,:,:]
+
+electrons_y = y[elec]
+
+electrons_x = np.squeeze(electrons_x)
+
+x = np.concatenate((electrons_x,x,electrons_x),axis=0)
+
+y = np.concatenate((electrons_y,y,electrons_y),axis=None)
 
 x = x.reshape(x.shape[0],x.shape[1],x.shape[2],1)
 
