@@ -31,16 +31,16 @@ with open(y_files[0], 'rb') as y_file0:
    
 print("recursively adding x pickles........................................................................................")
 
-#for i in x_files[1:]:
-for i in x_files[1:2]:
+for i in x_files[1:]:
+#for i in x_files[1:2]:
     with open(i,'rb') as x_file:
         xi = pickle.load(x_file)
         x = np.concatenate((x,xi),axis=0)
         
 print("recursively adding y pickles........................................................................................")
         
-#for i in y_files[1:]:
-for i in y_files[1:2]:
+for i in y_files[1:]:
+#for i in y_files[1:2]:
     with open(i,'rb') as y_file:
         yi = pickle.load(y_file)
         y = np.concatenate((y,yi),axis=None)
@@ -72,6 +72,10 @@ x = np.concatenate((electrons_x,x,electrons_x),axis=0)
 y = np.concatenate((electrons_y,y,electrons_y),axis=None)
 
 x = x.reshape(x.shape[0],x.shape[1],x.shape[2],1)
+
+mu = np.mean(x)
+
+x = np.true_divide(x,mu)
  
 #with open('/scratch/vljchr004/data/msc-thesis-data/cnn/x.pkl', 'rb') as x_file:
 #    x = pickle.load(x_file)
