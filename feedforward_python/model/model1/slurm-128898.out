@@ -1,0 +1,1 @@
+2019-05-24 09:23:29.816610: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
