@@ -205,3 +205,4 @@ Epoch 98/100
 Epoch 99/100
  - 227s - loss: 0.5759 - acc: 0.7373 - val_loss: 0.5761 - val_acc: 0.7371
 Epoch 100/100
+ - 228s - loss: 0.5759 - acc: 0.7373 - val_loss: 0.5761 - val_acc: 0.7371
