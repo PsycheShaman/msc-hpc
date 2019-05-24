@@ -36,7 +36,7 @@
 
 #module load software/R-3.5.2
 module load python/anaconda-python-3.7 
-#module load software/TensorFlow-CPU-py3
+module load software/TensorFlow-CPU-py3
 #module load python/TensorAnaconda 
 
 # Your science stuff goes here...
