@@ -72,6 +72,10 @@ x = np.concatenate((electrons_x,x,electrons_x),axis=0)
 y = np.concatenate((electrons_y,y,electrons_y),axis=None)
 
 x = x.reshape(x.shape[0],x.shape[1],x.shape[2],1)
+
+mu = np.mean(x)
+
+x = np.true_divide(x,mu)
  
 #with open('/scratch/vljchr004/data/msc-thesis-data/cnn/x.pkl', 'rb') as x_file:
 #    x = pickle.load(x_file)
