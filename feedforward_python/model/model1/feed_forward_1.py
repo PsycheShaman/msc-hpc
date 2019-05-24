@@ -62,6 +62,10 @@ electrons_x = np.squeeze(electrons_x)
 
 x = np.concatenate((electrons_x,x,electrons_x),axis=0)
 
+mu = np.mean(x)
+
+x = np.true_divide(x,mu)
+
 y = np.concatenate((electrons_y,y,electrons_y),axis=None)
     
 from tensorflow.keras.utils import to_categorical
