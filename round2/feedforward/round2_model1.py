@@ -102,6 +102,14 @@ from sklearn.model_selection import train_test_split
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2,random_state=123456)
 
+from sklearn.utils import class_weight
+
+y_train = np.array([0,1,0,0,0,0,1,1,1,1,0,0,0,0])
+
+class_weights = class_weight.compute_class_weight('balanced',
+                                                 np.unique(y_train),
+                                                 y_train)
+
 import tensorflow
 
 from tensorflow import keras
@@ -148,7 +156,7 @@ batch_size=32
 model1_dropout_0_5.compile(loss='binary_crossentropy',
               optimizer='rmsprop',
               metrics=['accuracy'],
-              class_weight={0: 0.25, 1: 0.75})
+              class_weight=class_weights)
 
 
 history = model1_dropout_0_5.fit(x_train, y_train,
