@@ -41,4 +41,4 @@ module load software/TensorFlow-CPU-py3
 
 # Your science stuff goes here...
 
-python -u /home/vljchr004/msc-hpc/feedforward_python/model/model1/feed_forward_1_do_ws_std.py > out.txt
+python -u /home/vljchr004/msc-hpc/feedforward_python/model/standardize_big_mod/feed_forward_1_do_ws_std.py > out.txt
