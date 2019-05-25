@@ -87,9 +87,9 @@ x_add = np.true_divide(x_add,sigma)
     
 x = np.hstack((x,x_add))
 
-from sklearn import preprocessing
+from sklearn.preprocessing import StandardScaler
 
-scaler = sklearn.preprocessing.StandardScaler()
+scaler = StandardScaler()
 
 scaler.fit(x.astype(float))
 
