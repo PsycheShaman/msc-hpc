@@ -108,6 +108,13 @@ class_weights = class_weight.compute_class_weight('balanced',
                                                  np.unique(y_train),
                                                  y_train)
 
+class_weights = {0:class_weights[0],1:class_weights[1]}
+
+'''
+x_train = np.array([0,0,0,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,3,3,3])
+y_train=1
+'''
+
 import tensorflow
 
 from tensorflow import keras
@@ -153,8 +160,7 @@ batch_size=32
     
 model1_dropout_0_5.compile(loss='binary_crossentropy',
               optimizer='rmsprop',
-              metrics=['accuracy'],
-              class_weight=class_weights)
+              metrics=['accuracy'])
 
 
 history = model1_dropout_0_5.fit(x_train, y_train,
@@ -162,7 +168,8 @@ history = model1_dropout_0_5.fit(x_train, y_train,
               epochs=epochs,
               validation_split=0.1,
               shuffle=True,
-              verbose=2)
+              verbose=2,
+              class_weight=class_weights)
 
 import matplotlib.pyplot as plt
 
