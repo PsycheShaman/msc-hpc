@@ -107,11 +107,11 @@ y_train = y_train[1:2]
 
 from sklearn.utils import class_weight
 
-class_weights = class_weight.compute_class_weight('balanced',
-                                                 np.unique(y_train),
-                                                 y_train)
-
-class_weights = {0:class_weights[0],1:class_weights[1]}
+#class_weights = class_weight.compute_class_weight('balanced',
+#                                                 np.unique(y_train),
+#                                                 y_train)
+#
+#class_weights = {0:class_weights[0],1:class_weights[1]}
 
 import tensorflow
 
@@ -164,10 +164,10 @@ model1_dropout_0_5.compile(loss='binary_crossentropy',
 history = model1_dropout_0_5.fit(x_train, y_train,
               batch_size=batch_size,
               epochs=epochs,
-              validation_split=0.1,
+              #validation_split=0.1,
               shuffle=True,
-              verbose=2,
-              class_weight=class_weights)
+              verbose=2)#,
+              #class_weight=class_weights)
 
 import matplotlib.pyplot as plt
 
