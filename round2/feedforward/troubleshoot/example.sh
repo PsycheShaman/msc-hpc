@@ -41,4 +41,4 @@ module load software/TensorFlow-CPU-py3
 
 # Your science stuff goes here...
 
-python -u /home/vljchr004/msc-hpc/round2/feedforward/round2_model1.py > out.txt
+python -u /home/vljchr004/msc-hpc/round2/feedforward/troubleshoot/round2_model1.py > out.txt
