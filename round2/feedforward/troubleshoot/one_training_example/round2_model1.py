@@ -102,8 +102,8 @@ from sklearn.model_selection import train_test_split
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2,random_state=123456)
 
-x_train = x_train[1:2,:]
-y_train = y_train[1:2]
+x_train = x_train[1,:]
+y_train = y_train[1]
 
 from sklearn.utils import class_weight
 
@@ -129,27 +129,27 @@ epochs = 100
 #y_test = tensorflow.keras.utils.to_categorical(y_test, num_classes)
     
 model1_dropout_0_5 = Sequential([
-    Dense(1024, input_shape=(32,)),
+#    Dense(1024, input_shape=(32,)),
+#    Activation('relu'),
+##    Dropout(0.8),
+#    Dense(1024),
+#    Activation('relu'),
+##    Dropout(0.8),
+#    Dense(512),
+#    Activation('relu'),
+##    Dropout(0.5),
+#    Dense(512),
+#    Activation('relu'),
+#    Dropout(0.5),
+    Dense(256, input_shape=(32,)),
     Activation('relu'),
-    Dropout(0.8),
-    Dense(1024),
-    Activation('relu'),
-    Dropout(0.8),
-    Dense(512),
-    Activation('relu'),
-    Dropout(0.5),
-    Dense(512),
-    Activation('relu'),
-    Dropout(0.5),
-    Dense(256),
-    Activation('relu'),
-    Dropout(0.5),
+#    Dropout(0.5),
     Dense(128),
     Activation('relu'),
-    Dropout(0.5),
+#    Dropout(0.5),
     Dense(64),
     Activation('relu'),
-    Dropout(0.5),
+#    Dropout(0.5),
     Dense(1),
     Activation('softmax')
 ])
