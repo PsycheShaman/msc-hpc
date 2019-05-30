@@ -1,12 +1,12 @@
 print("==============================================================================================")
 
-import argparse
-
-parser = argparse.ArgumentParser()
-parser.add_argument("run", help="enter the specific run you need to process",type=str)
-args = parser.parse_args()
-
-run = str(args.run)
+#import argparse
+#
+#parser = argparse.ArgumentParser()
+#parser.add_argument("run", help="enter the specific run you need to process",type=str)
+#args = parser.parse_args()
+#
+#run = str(args.run)
 
 print("starting........................................................................................")
 
@@ -14,11 +14,15 @@ import glob
 
 print("imported glob........................................................................................")
 
-files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/unprocessed/" + run + '/**/*.txt', recursive=True)
+#run = '000265309'
 
-a = list(range(1,len(files)-1))
+files_in_order = glob.glob("/scratch/vljchr004/data/msc-thesis-data/unprocessed/" + run + '/**/*.txt', recursive=True)
 
-files_in_order = [files[i] for i in a]
+#files_in_order = glob.glob("C:/Users/gerhard/Documents/data/msc-thesis-data/unprocessed/" + run + '/**/*.txt', recursive=True)
+
+#a = list(range(1,len(files)-1))
+#
+#files_in_order = [files[i] for i in a]
 
 print("read files list........................................................................................")
 
