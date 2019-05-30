@@ -64,9 +64,9 @@ pions_y = y[pion]
 
 pions_x = np.squeeze(pions_x)
 
-pions_x = pions_x[0:electrons_x.shape[0],:]
+pions_x = pions_x[0:electrons_x.shape[0]*2,:]
 
-pions_y = pions_y[0:electrons_y.shape[0]]
+pions_y = pions_y[0:electrons_y.shape[0]*2]
 
 
 x = np.concatenate((electrons_x,pions_x),axis=0)
@@ -99,6 +99,10 @@ x = scaler.transform(x.astype(float))
 
 from sklearn.utils import class_weight
 
+from sklearn.model_selection import train_test_split
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2,random_state=123456)
+
 class_weights = class_weight.compute_class_weight('balanced',
                                                  np.unique(y_train),
                                                  y_train)
@@ -107,11 +111,10 @@ class_weights = {0:class_weights[0],1:class_weights[1]}
 
 from tensorflow.keras.utils import to_categorical
 
-y = to_categorical(y)
+y_train = to_categorical(y_train)
+y_test = to_categorical(y_test)
 
-from sklearn.model_selection import train_test_split
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2,random_state=123456)
 
 import tensorflow
 
