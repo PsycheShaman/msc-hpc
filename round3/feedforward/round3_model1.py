@@ -96,14 +96,6 @@ scaler.fit(x.astype(float))
 
 x = scaler.transform(x.astype(float))
 
-   
-from tensorflow.keras.utils import to_categorical
-
-y = to_categorical(y)
-
-from sklearn.model_selection import train_test_split
-
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2,random_state=123456)
 
 from sklearn.utils import class_weight
 
@@ -112,6 +104,14 @@ class_weights = class_weight.compute_class_weight('balanced',
                                                  y_train)
 
 class_weights = {0:class_weights[0],1:class_weights[1]}
+
+from tensorflow.keras.utils import to_categorical
+
+y = to_categorical(y)
+
+from sklearn.model_selection import train_test_split
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2,random_state=123456)
 
 import tensorflow
 
