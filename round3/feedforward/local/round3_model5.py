@@ -126,7 +126,7 @@ from tensorflow.keras.layers import Dense, Dropout, Activation
 
 
 #num_classes = 2
-epochs = 100
+epochs = 50
 
 #y_train = tensorflow.keras.utils.to_categorical(y_train, num_classes)
 #y_test = tensorflow.keras.utils.to_categorical(y_test, num_classes)
@@ -155,7 +155,7 @@ model1_dropout_0_5 = Sequential([
     Activation('softmax')
 ])
 
-batch_size=1
+batch_size=32
     
 model1_dropout_0_5.compile(loss='binary_crossentropy',
               optimizer=sgd,
@@ -208,7 +208,7 @@ print("<-----------------------------done---------------------------------------
 
 
 #num_classes = 2
-epochs = 100
+epochs = 50
 
 #y_train = tensorflow.keras.utils.to_categorical(y_train, num_classes)
 #y_test = tensorflow.keras.utils.to_categorical(y_test, num_classes)
@@ -237,7 +237,7 @@ model1_dropout_0_5 = Sequential([
     Activation('softmax')
 ])
 
-batch_size=1
+batch_size=32
     
 model1_dropout_0_5.compile(loss='binary_crossentropy',
               optimizer=sgd,
@@ -289,7 +289,7 @@ print("<-----------------------------done---------------------------------------
 
 
 #num_classes = 2
-epochs = 100
+epochs = 50
 
 #y_train = tensorflow.keras.utils.to_categorical(y_train, num_classes)
 #y_test = tensorflow.keras.utils.to_categorical(y_test, num_classes)
@@ -318,7 +318,7 @@ model1_dropout_0_5 = Sequential([
     Activation('softmax')
 ])
 
-batch_size=1
+batch_size=32
     
 model1_dropout_0_5.compile(loss='binary_crossentropy',
               optimizer=sgd,
