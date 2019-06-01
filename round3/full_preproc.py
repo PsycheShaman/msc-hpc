@@ -174,14 +174,14 @@ print("concatenate pdgs and layers..............................................
 
 pdgCode = np.concatenate([pdgCode0,pdgCode1,pdgCode2,pdgCode3,pdgCode4,pdgCode5]).ravel()
 
-#x = np.vstack([layer0,layer1,layer2,layer3,layer4,layer5])
+x = np.vstack([layer0,layer1,layer2,layer3,layer4,layer5])
 
-x = np.vstack([np.array([np.sum(i,axis=0) for i in layer0]),\
-               np.array([np.sum(i,axis=0) for i in layer1]),\
-               np.array([np.sum(i,axis=0) for i in layer2]),\
-               np.array([np.sum(i,axis=0) for i in layer3]),\
-               np.array([np.sum(i,axis=0) for i in layer4]),\
-               np.array([np.sum(i,axis=0) for i in layer5])])
+#x = np.vstack([np.array([np.sum(i,axis=0) for i in layer0]),\
+#               np.array([np.sum(i,axis=0) for i in layer1]),\
+#               np.array([np.sum(i,axis=0) for i in layer2]),\
+#               np.array([np.sum(i,axis=0) for i in layer3]),\
+#               np.array([np.sum(i,axis=0) for i in layer4]),\
+#               np.array([np.sum(i,axis=0) for i in layer5])])
 
 
 
@@ -222,14 +222,14 @@ print("pickling files...........................................................
 
 import pickle
 
-with open('/scratch/vljchr004/data/msc-thesis-data/ff/x_' + run + '.pkl', 'wb') as x_file:
+with open('/scratch/vljchr004/data/msc-thesis-data/cnn/x_' + run + '.pkl', 'wb') as x_file:
   pickle.dump(x, x_file)
 
-with open('/scratch/vljchr004/data/msc-thesis-data/ff/y_' + run + '.pkl', 'wb') as y_file:
+with open('/scratch/vljchr004/data/msc-thesis-data/cnn/y_' + run + '.pkl', 'wb') as y_file:
   pickle.dump(y, y_file)
   
-np.save('/scratch/vljchr004/data/msc-thesis-data/ff/y_' + run + '.npy',y,allow_pickle=False)
-np.save('/scratch/vljchr004/data/msc-thesis-data/ff/x_' + run + '.npy',x,allow_pickle=False)
+np.save('/scratch/vljchr004/data/msc-thesis-data/cnn/y_' + run + '.npy',y,allow_pickle=False)
+np.save('/scratch/vljchr004/data/msc-thesis-data/cnn/x_' + run + '.npy',x,allow_pickle=False)
 
 print("done.........................................................................................")
 
