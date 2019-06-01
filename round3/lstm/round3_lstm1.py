@@ -97,7 +97,7 @@ model = Sequential()
 model.add(LSTM(128,input_shape=(24,1)))
 model.add(Dropout(0.5))
 model.add(Dense(128, activation='relu'))
-model.add(Dense(1, activation='softmax'))
+model.add(Dense(2, activation='softmax'))
 
 model.compile(loss='binary_crossentropy',
               optimizer='rmsprop',
