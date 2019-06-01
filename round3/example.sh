@@ -41,4 +41,4 @@ module load python/anaconda-python-3.7
 
 # Your science stuff goes here...
 
-python -u /home/vljchr004/msc-hpc/round3/full_preproc.py '000265343' > out.txt
+python -u /home/vljchr004/msc-hpc/round3/full_preproc.py 'x_000265344' > out.txt
