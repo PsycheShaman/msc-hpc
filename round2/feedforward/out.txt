@@ -83,33 +83,33 @@ Epoch 37/100
 Epoch 38/100
  - 3262s - loss: 8.1249 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
 Epoch 39/100
- val_loss: 8.1245 - val_acc: 0.2628
+ - 3527s - loss: 8.1245 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
 Epoch 40/100
- - 517s - loss: 8.1258 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
+ - 3613s - loss: 8.1258 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
 Epoch 41/100
- - 510s - loss: 8.1245 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
+ - 3615s - loss: 8.1244 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
 Epoch 42/100
- - 517s - loss: 8.1242 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
+ - 3290s - loss: 8.1249 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
 Epoch 43/100
- - 507s - loss: 8.1249 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
+ - 3669s - loss: 8.1252 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
 Epoch 44/100
- - 514s - loss: 8.1256 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
+ - 3306s - loss: 8.1251 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
 Epoch 45/100
- - 520s - loss: 8.1258 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
+ - 3560s - loss: 8.1246 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
 Epoch 46/100
- - 512s - loss: 8.1250 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
+ - 3867s - loss: 8.1249 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
 Epoch 47/100
- - 526s - loss: 8.1252 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
+ - 3846s - loss: 8.1252 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
 Epoch 48/100
- - 515s - loss: 8.1252 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
+ - 3863s - loss: 8.1241 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
 Epoch 49/100
- - 512s - loss: 8.1248 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
+ - 3851s - loss: 8.1254 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
 Epoch 50/100
- - 488s - loss: 8.1259 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
+ - 3742s - loss: 8.1248 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
 Epoch 51/100
- - 478s - loss: 8.1255 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
+ - 3701s - loss: 8.1249 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
 Epoch 52/100
- - 473s - loss: 8.1250 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
+1245 - val_acc: 0.2628
 Epoch 53/100
  - 483s - loss: 8.1243 - acc: 0.2627 - val_loss: 8.1245 - val_acc: 0.2628
 Epoch 54/100

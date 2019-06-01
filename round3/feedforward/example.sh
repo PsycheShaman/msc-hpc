@@ -12,7 +12,7 @@
 #SBATCH --nodes=1 --ntasks=2
 
 # The line below indicates the wall time your job will need, 10 hours for example. NB, this is a mandatory directive!
-#SBATCH --time=50:00:00
+#SBATCH --time=70:00:00
 
 # A sensible name for your job, try to keep it short
 #SBATCH --job-name="MyJob"
@@ -41,4 +41,4 @@ module load software/TensorFlow-CPU-py3
 
 # Your science stuff goes here...
 
-python -u /home/vljchr004/msc-hpc/round3/feedforward/round3_model5_6_7.py > out.txt
+python -u /home/vljchr004/msc-hpc/round3/feedforward/round3_model5.py > out.txt
