@@ -193,6 +193,15 @@ def pdg_code_to_elec(i):
         
 y = np.array([pdg_code_to_elec(i) for i in pdgCode])
 
+nz = np.array([np.count_nonzero(i) for i in x])
+
+zeros = np.where(nz==0)
+
+x = np.delete(x,zeros,axis=0)
+y = np.delete(y,zeros)
+
+#x.shape = (x.shape[0],x.shape[1],x.shape[2],1)
+
 print("mapped out electrons....................................................................")
 
 #print(y)
@@ -220,13 +229,13 @@ print(y)
 
 print("pickling files........................................................................................")
 
-import pickle
-
-with open('/scratch/vljchr004/data/msc-thesis-data/cnn/x_' + run + '.pkl', 'wb') as x_file:
-  pickle.dump(x, x_file)
-
-with open('/scratch/vljchr004/data/msc-thesis-data/cnn/y_' + run + '.pkl', 'wb') as y_file:
-  pickle.dump(y, y_file)
+#import pickle
+#
+#with open('/scratch/vljchr004/data/msc-thesis-data/cnn/x_' + run + '.pkl', 'wb') as x_file:
+#  pickle.dump(x, x_file)
+#
+#with open('/scratch/vljchr004/data/msc-thesis-data/cnn/y_' + run + '.pkl', 'wb') as y_file:
+#  pickle.dump(y, y_file)
   
 np.save('/scratch/vljchr004/data/msc-thesis-data/cnn/y_' + run + '.npy',y,allow_pickle=False)
 np.save('/scratch/vljchr004/data/msc-thesis-data/cnn/x_' + run + '.npy',x,allow_pickle=False)
