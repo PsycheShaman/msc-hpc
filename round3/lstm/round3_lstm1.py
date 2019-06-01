@@ -55,6 +55,8 @@ scaler.fit(x.astype(float))
 
 x = scaler.transform(x.astype(float))
 
+x.shape = (x.shape[0],x.shape[1],1)
+
 
 from sklearn.utils import class_weight
 
