@@ -108,8 +108,8 @@ history = model.fit(x_train, y_train,
               epochs=epochs,
               validation_split=0.1,
               shuffle=True,
-              verbose=2,
-              class_weight=class_weights)
+              verbose=2)#,
+              #class_weight=class_weights)
 
 import matplotlib.pyplot as plt
 
