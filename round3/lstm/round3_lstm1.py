@@ -62,11 +62,11 @@ from sklearn.model_selection import train_test_split
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2,random_state=123456)
 
-class_weights = class_weight.compute_class_weight('balanced',
-                                                 np.unique(y_train),
-                                                 y_train)
-
-class_weights = {0:class_weights[0],1:class_weights[1]}
+#class_weights = class_weight.compute_class_weight('balanced',
+#                                                 np.unique(y_train),
+#                                                 y_train)
+#
+#class_weights = {0:class_weights[0],1:class_weights[1]}
 
 from tensorflow.keras.utils import to_categorical
 
@@ -92,7 +92,7 @@ from tensorflow.keras import optimizers
 sgd = optimizers.SGD(lr=0.01, clipvalue=0.5)    
 
 model = Sequential()
-model.add(LSTM(128))
+model.add(LSTM(128,input_shape=(24,)))
 model.add(Dropout(0.5))
 model.add(Dense(128, activation='relu'))
 model.add(Dense(1, activation='softmax'))
