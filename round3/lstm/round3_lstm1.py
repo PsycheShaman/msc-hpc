@@ -92,7 +92,7 @@ from tensorflow.keras import optimizers
 sgd = optimizers.SGD(lr=0.01, clipvalue=0.5)    
 
 model = Sequential()
-model.add(LSTM(128,input_shape=(24,)))
+model.add(LSTM(128,input_shape=(24,1)))
 model.add(Dropout(0.5))
 model.add(Dense(128, activation='relu'))
 model.add(Dense(1, activation='softmax'))
