@@ -96,7 +96,7 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D
 
 
 #num_classes = 2
-epochs = 100
+epochs = 40
 
 model = Sequential()
 model.add(Conv2D(32, kernel_size=(3, 3),
