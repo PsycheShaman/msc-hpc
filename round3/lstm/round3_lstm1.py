@@ -86,7 +86,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation
 from tensorflow.keras.layers import LSTM
 
-epochs = 100
+epochs = 40
 
 
 from tensorflow.keras import optimizers
@@ -97,11 +97,9 @@ model = Sequential()
 model.add(LSTM(256,input_shape=(24,1),return_sequences=True))
 model.add(Dropout(0.5))
 model.add(LSTM(256))
+model.add(Dropout(0.5))
 model.add(Dense(256, activation='relu'))
 model.add(Dropout(0.5))
-model.add(Dense(128, activation='relu'))
-model.add(Dropout(0.5))
-model.add(Dense(128, activation='relu'))
 model.add(Dense(2, activation='softmax'))
 
 model.compile(loss='binary_crossentropy',
