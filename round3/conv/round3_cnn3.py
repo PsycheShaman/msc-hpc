@@ -8,11 +8,11 @@ import numpy as np
 
 print("imported glob, np........................................................................................")
 
-#x_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/ff/x_*.pkl")
-#y_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/ff/y_*.pkl")
+x_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/ff/x_*.pkl")
+y_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/ff/y_*.pkl")
 
-x_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\x_*.pkl")
-y_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\y_*.pkl")
+#x_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\x_*.pkl")
+#y_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\y_*.pkl")
 
 import pickle
 
@@ -128,7 +128,7 @@ model.compile(loss='binary_crossentropy',
 batch_size=32
     
 history=model.fit(x_train, y_train,
-              #batch_size=batch_size,
+              batch_size=batch_size,
               epochs=epochs,
               validation_split=0.1,
               shuffle=True)#,
@@ -143,7 +143,7 @@ plt.title('model accuracy')
 plt.ylabel('accuracy')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
-plt.savefig('C:/Users/gerhard/Documents/msc-hpc/round3/conv/round3_model3_history1.png', bbox_inches='tight')
+plt.savefig('/home/vljchr004/msc-hpc/round3/conv/round3_model3_history1.png', bbox_inches='tight')
 # summarize history for loss
 
 plt.close()
@@ -155,16 +155,16 @@ plt.title('model loss')
 plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
-plt.savefig('C:/Users/gerhard/Documents/msc-hpc/round3/conv/round3_model3_history2.png', bbox_inches='tight')
+plt.savefig('/home/vljchr004/msc-hpc/round3/conv/round3_model3_history2.png', bbox_inches='tight')
 
 model.probs = model.predict_proba(x_test)
 
 import numpy as np
-np.savetxt("C:/Users/gerhard/Documents/msc-hpc/round3/conv/round3_model3_results.csv", np.array(model.probs), fmt="%s")
+np.savetxt("/home/vljchr004/msc-hpc/round3/conv/round3_model3_results.csv", np.array(model.probs), fmt="%s")
 
-np.savetxt("C:/Users/gerhard/Documents/msc-hpc/round3/conv/round3_model3_y_test.csv", np.array(y_test), fmt="%s")
+np.savetxt("/home/vljchr004/msc-hpc/round3/conv/round3_model3_y_test.csv", np.array(y_test), fmt="%s")
 
-model.save('C:/Users/gerhard/Documents/msc-hpc/round3/conv/round3_model3_.h5')  # creates a HDF5 file 'my_model.h5'
+model.save('/home/vljchr004/msc-hpc/round3/conv/round3_model3_.h5')  # creates a HDF5 file 'my_model.h5'
 del model
 
 print("<-----------------------------done------------------------------------------>")
