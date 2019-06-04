@@ -46,7 +46,7 @@ y_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/y_*.npy")
        
 print("recursively adding x numpys........................................................................................")
 
-for i in x_files[1:]:
+for i in x_files[0:]:
     with open(i,'rb') as x_file:
         print(i)
         xi = np.load(x_file)
@@ -54,7 +54,7 @@ for i in x_files[1:]:
 
 print("recursively adding y numpys........................................................................................")
 
-for i in y_files[1:]:
+for i in y_files[0:]:
     with open(i,'rb') as y_file:
         yi = np.load(y_file)
         y = np.concatenate((y,yi),axis=None)        
