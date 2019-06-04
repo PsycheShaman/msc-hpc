@@ -1,0 +1,2 @@
+2019-06-03 03:25:10.151392: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+slurmstepd: error: *** JOB 151098 ON srvcnthpc109 CANCELLED AT 2019-06-03T10:41:05 ***
