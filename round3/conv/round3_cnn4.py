@@ -141,10 +141,6 @@ model.add(Dropout(0.25))
 model.add(Flatten())
 model.add(Dense(256, activation='relu'))
 model.add(Dropout(0.5))
-model.add(Dense(256, activation='relu'))
-model.add(Dropout(0.5))
-model.add(Dense(128, activation='relu'))
-model.add(Dropout(0.5))
 model.add(Dense(128, activation='relu'))
 model.add(Dropout(0.5))
 model.add(Dense(2, activation='softmax'))
@@ -152,7 +148,7 @@ model.add(Dense(2, activation='softmax'))
 # initiate RMSprop optimizer
 #opt = keras.optimizers.rmsprop(lr=0.0001, decay=1e-6)
 
-sgd = tensorflow.keras.optimizers.SGD(lr=0.01, clipvalue=0.5) 
+sgd = tensorflow.keras.optimizers.SGD(lr=0.001) 
 
 # Let's train the model using RMSprop
 model.compile(loss='binary_crossentropy',
@@ -162,7 +158,7 @@ model.compile(loss='binary_crossentropy',
 batch_size=32
     
 history=model.fit(x_train, y_train,
-              batch_size=batch_size,
+              #batch_size=batch_size,
               epochs=epochs,
               validation_split=0.1,
               shuffle=True)#,
