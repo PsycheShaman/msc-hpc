@@ -8,8 +8,8 @@ import numpy as np
 
 print("imported glob, np........................................................................................")
 
-x_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/ff/x_*.pkl")
-y_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/ff/y_*.pkl")
+x_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/x_*.pkl")
+y_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/y_*.pkl")
 
 #x_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\x_*.pkl")
 #y_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\y_*.pkl")
