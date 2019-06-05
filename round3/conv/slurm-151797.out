@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vljchr004/msc-hpc/round3/conv/round3_cnn4.py", line 53, in <module>
-    x = np.concatenate((x,xi),axis=0)
-ValueError: all the input arrays must have same number of dimensions
