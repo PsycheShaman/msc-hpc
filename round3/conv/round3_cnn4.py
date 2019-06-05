@@ -8,11 +8,11 @@ import numpy as np
 
 print("imported glob, np........................................................................................")
 
-#x_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/ff/x_*.pkl")
-#y_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/ff/y_*.pkl")
+x_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/ff/x_*.pkl")
+y_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/ff/y_*.pkl")
 
-x_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\x_*.pkl")
-y_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\y_*.pkl")
+#x_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\x_*.pkl")
+#y_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\y_*.pkl")
 
 import pickle
 
@@ -41,13 +41,15 @@ for i in y_files[1:]:
         yi = pickle.load(y_file)
         y = np.concatenate((y,yi),axis=None)
  
-#x_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/x_*.npy")
-#y_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/y_*.npy")
+
 print("x.shape...........................................................................")
 print(x.shape)
+
+x_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/x_*.npy")
+y_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/y_*.npy")
         
-x_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\x_*.npy")
-y_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\y_*.npy")
+#x_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\x_*.npy")
+#y_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\y_*.npy")
        
 print("recursively adding x numpys........................................................................................")
 
@@ -93,8 +95,8 @@ x = x-mu
 
 x=x/sd
 
-np.save('C:/Users/gerhard/Documents/msc-thesis-data/cnn/y_full.npy',y,allow_pickle=False)
-np.save('C:/Users/gerhard/Documents/msc-thesis-data/cnn/x_full.npy',x,allow_pickle=False)
+#np.save('C:/Users/gerhard/Documents/msc-thesis-data/cnn/y_full.npy',y,allow_pickle=False)
+#np.save('C:/Users/gerhard/Documents/msc-thesis-data/cnn/x_full.npy',x,allow_pickle=False)
 
 
 #from sklearn.utils import class_weight
