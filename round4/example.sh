@@ -36,8 +36,9 @@
 
 #module load software/R-3.5.2
 module load python/anaconda-python-3.7
-module load nvidia/Cuda10
-module load software/TensorFlow-GPU-py3
+#module load software/NAMD-2.13-CUDA
+#module load nvidia/Cuda10
+module load software/TensorFlow-CPU-py3
 
 #module load python/TensorAnaconda
 

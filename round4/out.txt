@@ -1,0 +1,33 @@
+==============================================================================================
+starting........................................................................................
+imported glob, np........................................................................................
+loading first x pickle........................................................................................
+loading first y pickle........................................................................................
+recursively adding x pickles........................................................................................
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265426.pkl
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265336.pkl
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265420.pkl
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265381.pkl
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265334.pkl
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265419.pkl
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265377.pkl
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265383.pkl
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265338.pkl
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265339.pkl
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265342.pkl
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265335.pkl
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265425.pkl
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265309.pkl
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265332.pkl
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265388.pkl
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265499.pkl
+recursively adding y pickles........................................................................................
+recursively adding x numpys........................................................................................
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265344.npy
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265343.npy
+/scratch/vljchr004/data/msc-thesis-data/cnn/x_000265378.npy
+recursively adding y numpys........................................................................................
+removing useless elements........................................................................................
+Train on 4769981 samples, validate on 529998 samples
+Epoch 1/40
+  10000/4769981 [..............................] - ETA: 1:34:43 - loss: 2.1612 - acc: 0.1180  20000/4769981 [..............................] - ETA: 1:31:43 - loss: 2.1523 - acc: 0.1183  30000/4769981 [..............................] - ETA: 1:30:36 - loss: 2.1421 - acc: 0.1181  40000/4769981 [..............................] - ETA: 1:29:42 - loss: 2.1356 - acc: 0.1170  50000/4769981 [..............................] - ETA: 1:29:14 - loss: 2.1286 - acc: 0.1159  60000/4769981 [..............................] - ETA: 1:28:59 - loss: 2.1169 - acc: 0.1164

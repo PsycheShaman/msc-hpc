@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vljchr004/msc-hpc/round3/full_preproc.py", line 73, in <module>
-    layer0 = np.stack(layer0)
-  File "/opt/exp_soft/anaconda3/lib/python3.7/site-packages/numpy/core/shape_base.py", line 349, in stack
-    raise ValueError('need at least one array to stack')
-ValueError: need at least one array to stack
