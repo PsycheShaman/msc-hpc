@@ -32,19 +32,11 @@ def file_reader1(i):
         di = literal_eval(di)
         ki = list(di.keys())
         P = [di.get(k).get('P') for k in ki]
+        l = [di.get(k).get('layer0') for k in ki]
+        
         return(P)
         
-def file_reader2(i,l):
-    di = open(i)
-    di = di.read()
-    if di == "}":
-        pass
-    else:
-        di = di + "}"
-        di = literal_eval(di)
-        ki = list(di.keys())
-        layer = [di.get(k).get(l) for k in ki]
-        return(layer)
+
 
 import numpy as np
 
