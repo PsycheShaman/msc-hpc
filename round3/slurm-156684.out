@@ -1,6 +1,6 @@
 Traceback (most recent call last):
-  File "/home/vljchr004/msc-hpc/round3/preproc_add_info.py", line 64, in <module>
+  File "/home/vljchr004/msc-hpc/round3/preproc_add_info.py", line 63, in <module>
     layer0 = np.array([item for sublist in layer0 for item in sublist])
-  File "/home/vljchr004/msc-hpc/round3/preproc_add_info.py", line 64, in <listcomp>
+  File "/home/vljchr004/msc-hpc/round3/preproc_add_info.py", line 63, in <listcomp>
     layer0 = np.array([item for sublist in layer0 for item in sublist])
 TypeError: 'NoneType' object is not iterable
