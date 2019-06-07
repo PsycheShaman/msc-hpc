@@ -1,12 +1,12 @@
 print("==============================================================================================")
 
-import argparse
-
-parser = argparse.ArgumentParser()
-parser.add_argument("run", help="enter the specific run you need to process",type=str)
-args = parser.parse_args()
-
-run = str(args.run)
+#import argparse
+#
+#parser = argparse.ArgumentParser()
+#parser.add_argument("run", help="enter the specific run you need to process",type=str)
+#args = parser.parse_args()
+#
+#run = str(args.run)
 
 print("starting........................................................................................")
 
@@ -14,11 +14,15 @@ import glob
 
 print("imported glob........................................................................................")
 
-#run = '000265309'
+run = '000265339'
 
-files_in_order = glob.glob("/scratch/vljchr004/data/msc-thesis-data/unprocessed/" + run + '/**/*.txt', recursive=True)
+#files_in_order = glob.glob("/scratch/vljchr004/data/msc-thesis-data/unprocessed/" + run + '/**/*.txt', recursive=True)
 
-#files_in_order = glob.glob("C:/Users/gerhard/Documents/data/msc-thesis-data/unprocessed/" + run + '/**/*.txt', recursive=True)
+files_in_order = glob.glob("C:/Users/gerhard/Documents/msc-thesis-data/unprocessed/" + run + '/**/*.txt', recursive=True)
+
+a = list(range(1,len(files_in_order)-1))
+
+files_in_order = [files_in_order[i] for i in a]
 
 print("read files list........................................................................................")
 
@@ -38,6 +42,7 @@ def file_reader1(i):
         
 def file_reader2(i,l):
     di = open(i)
+    print(i)
     di = di.read()
     if di == "}":
         pass
@@ -60,7 +65,7 @@ print("layer 0..................................................................
 
 layer0 = [file_reader2(i,"layer 0") for i in files_in_order]
 
-layer0 = np.array([item for sublist in layer0 for item in sublist])
+layer0 = np.array([item for sublist in layer0 for item in sublist if sublist is not None])
 
 P0 = np.array([item for sublist in P0 for item in sublist])
 
@@ -180,7 +185,9 @@ zeros = np.where(nz==0)
 
 P = np.delete(P,zeros)
   
-np.savetxt('/scratch/vljchr004/data/msc-thesis-data/cnn/P_' + run + '.csv',P,delimiter=", ")
+#np.savetxt('/scratch/vljchr004/data/msc-thesis-data/cnn/P_' + run + '.csv',P,delimiter=", ")
+
+np.savetxt('C:/Users/gerhard/Documents/msc-thesis-data/cnn/P_' + run + '.csv',P,delimiter=", ")
 
 print("done.........................................................................................")
 
