@@ -119,10 +119,10 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D
 epochs = 40
 
 model = Sequential()
-model.add(Conv2D(32, kernel_size=(3, 3), strides=(2,2),
+model.add(Conv2D(32, kernel_size=(3, 3),
                  activation='tanh',
                  input_shape=(x_train.shape[1],x_train.shape[2],x_train.shape[3]),data_format="channels_last"))
-model.add(Conv2D(64, kernel_size=(3, 3), strides=(2,2), activation='tanh'))
+model.add(Conv2D(64, kernel_size=(3, 3), activation='tanh'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Conv2D(128, kernel_size=(3, 3), activation='tanh'))
 model.add(Conv2D(128, kernel_size=(3, 3), activation='tanh'))
