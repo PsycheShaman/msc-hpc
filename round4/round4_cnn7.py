@@ -119,16 +119,16 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D
 epochs = 40
 
 model = Sequential()
-model.add(Conv2D(32, kernel_size=(3, 3), strides=(2,2),
+model.add(Conv2D(32, kernel_size=(3, 3),
                  activation='tanh',
                  input_shape=(x_train.shape[1],x_train.shape[2],x_train.shape[3]),data_format="channels_last"))
-model.add(Conv2D(64, kernel_size=(3, 3), strides=(2,2)))
+model.add(Conv2D(64, kernel_size=(3, 3)))
 model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Conv2D(128, kernel_size=(3, 3), strides=(2,2)))
-model.add(Conv2D(128, kernel_size=(3, 3), strides=(2,2)))
+model.add(Conv2D(128, kernel_size=(3, 3)))
+model.add(Conv2D(128, kernel_size=(3, 3)))
 model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Conv2D(256, kernel_size=(3, 3), strides=(2,2)))
-model.add(Conv2D(256, kernel_size=(3, 3), strides=(2,2)))
+model.add(Conv2D(256, kernel_size=(3, 3)))
+model.add(Conv2D(256, kernel_size=(3, 3)))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Dropout(0.5))
 model.add(Flatten())
@@ -148,7 +148,7 @@ model.compile(loss='binary_crossentropy',
               optimizer=sgd,
               metrics=['accuracy'])
 
-batch_size=100000
+batch_size=100
     
 history=model.fit(x_train, y_train,
               batch_size=batch_size,
@@ -166,7 +166,7 @@ plt.title('model accuracy')
 plt.ylabel('accuracy')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
-plt.savefig('/scratch/vljchr004/data/msc-hpc/round3/conv/round3_model5_history1.png', bbox_inches='tight')
+plt.savefig('/home/vljchr004/msc-hpc/round4/round4_model7_history1.png', bbox_inches='tight')
 # summarize history for loss
 
 plt.close()
@@ -178,16 +178,16 @@ plt.title('model loss')
 plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
-plt.savefig('/scratch/vljchr004/data/msc-hpc/round3/conv/round3_model5_history2.png', bbox_inches='tight')
+plt.savefig('/home/vljchr004/msc-hpc/round4/round4_model7_history2.png', bbox_inches='tight')
 
 model.probs = model.predict_proba(x_test)
 
 import numpy as np
-np.savetxt("/scratch/vljchr004/data/msc-hpc/round3/conv/round3_model5_results.csv", np.array(model.probs), fmt="%s")
+np.savetxt("/home/vljchr004/msc-hpc/round4/round4_model7_results.csv", np.array(model.probs), fmt="%s")
 
-np.savetxt("/scratch/vljchr004/data/msc-hpc/round3/conv/round3_model5_y_test.csv", np.array(y_test), fmt="%s")
+np.savetxt("/home/vljchr004/msc-hpc/round4/round4_model7_y_test.csv", np.array(y_test), fmt="%s")
 
-model.save('/scratch/vljchr004/data/msc-hpc/round3/conv/round3_model5_.h5')  # creates a HDF5 file 'my_model.h5'
+model.save('/home/vljchr004/msc-hpc/round4/round4_model7_.h5')  # creates a HDF5 file 'my_model.h5'
 del model
 
 print("<-----------------------------done------------------------------------------>")
