@@ -30,7 +30,7 @@ print("recursively adding x pickles.............................................
 
 for i in x_files[1:]:
     with open(i,'rb') as x_file:
-        print(i)
+        #print(i)
         xi = pickle.load(x_file)
         x = np.concatenate((x,xi),axis=0)
         
@@ -55,10 +55,10 @@ print("recursively adding x numpys..............................................
 
 for i in x_files[0:]:
     with open(i,'rb') as x_file:
-        print(i)
+        #print(i)
         xi = np.load(x_file)
-        print("xi.shape")
-        print(xi.shape)
+        #print("xi.shape")
+        #print(xi.shape)
         x = np.concatenate((x,xi),axis=0)
 
 print("recursively adding y numpys........................................................................................")
@@ -85,6 +85,14 @@ print(x.shape)
 elec = np.where(y==1)
 pion = np.where(y!=1)
 
+pion = pion[0:elec.shape[0]]
+
+print("pion.shape")
+print(pion.shape)
+
+print("elec.shape")
+print(elec.shape)
+
 electrons_x = x[elec,:,:]
 
 electrons_y = y[elec]
@@ -93,8 +101,6 @@ electrons_x = np.squeeze(electrons_x)
 
 print("electrons_x.shape")
 print(electrons_x.shape)
-
-pion = pion[0:electrons_x.shape[0]]
 
 pions_x = x[pion,:,:]
 
