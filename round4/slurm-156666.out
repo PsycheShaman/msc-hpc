@@ -1,4 +1,0 @@
-Loading software/NAMD-2.13-CUDA
-  Loading requirement: compilers/gcc820 mpi/openmpi-3.1.2 cuda/cuda-9.2
-[34mINFO:   [0m Could not find any NVIDIA binaries on this host!
-slurmstepd: error: *** JOB 156666 ON srvcnthpc104 CANCELLED AT 2019-06-05T21:36:42 ***

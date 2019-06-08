@@ -12,7 +12,7 @@
 #SBATCH --nodes=2 --ntasks=16
 
 # The line below indicates the wall time your job will need, 10 hours for example. NB, this is a mandatory directive!
-#SBATCH --time=50:00:00
+#SBATCH --time=70:00:00
 
 # A sensible name for your job, try to keep it short
 #SBATCH --job-name="MyJob"

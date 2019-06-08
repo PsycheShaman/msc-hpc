@@ -116,7 +116,7 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D
 
 
 #num_classes = 2
-epochs = 40
+epochs = 20
 
 model = Sequential()
 model.add(Conv2D(32, kernel_size=(3, 3),
@@ -143,7 +143,7 @@ model.compile(loss='binary_crossentropy',
               optimizer=sgd,
               metrics=['accuracy'])
 
-batch_size=100000
+batch_size=1000000
     
 history=model.fit(x_train, y_train,
               batch_size=batch_size,
