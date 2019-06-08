@@ -85,13 +85,7 @@ print(x.shape)
 elec = np.where(y==1)
 pion = np.where(y!=1)
 
-pion = pion[0:elec.shape[0]]
-
-print("pion.shape")
-print(pion.shape)
-
-print("elec.shape")
-print(elec.shape)
+pion = pion[0:len(elec)]
 
 electrons_x = x[elec,:,:]
 
