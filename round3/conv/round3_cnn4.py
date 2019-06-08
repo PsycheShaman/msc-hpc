@@ -88,6 +88,8 @@ electrons_y = y[elec]
 
 electrons_x = np.squeeze(electrons_x)
 
+pion = pion[0:electrons_x.shape[0]]
+
 pions_x = x[pion,:,:]
 
 pions_y = y[pion]
