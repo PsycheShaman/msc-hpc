@@ -144,7 +144,7 @@ plt.savefig('/home/vljchr004/msc-hpc/round3/lstm/round3_model1_history2.png', bb
 model.probs = model.predict_proba(x_test)
 
 import numpy as np
-np.savetxt("/home/vljchr004/msc-hpc/round3/lstm/round3_model1_results.csv", np.array(model1_dropout_0_5.probs), fmt="%s")
+np.savetxt("/home/vljchr004/msc-hpc/round3/lstm/round3_model1_results.csv", np.array(model.probs), fmt="%s")
 
 np.savetxt("/home/vljchr004/msc-hpc/round3/lstm/round3_model1_y_test.csv", np.array(y_test), fmt="%s")
 
