@@ -68,6 +68,29 @@ zeros = np.where(nz==0)
 x = np.delete(x,zeros,axis=0)
 y = np.delete(y,zeros)
 
+#oversample electrons
+
+elec = np.where(y==1)
+pion = np.where(y!=1)
+
+electrons_x = x[elec,:,:]
+
+electrons_y = y[elec]
+
+electrons_x = np.squeeze(electrons_x)
+
+pion = pion[0:electrons_x.shape[0]]
+
+pions_x = x[pion,:,:]
+
+pions_y = y[pion]
+
+pions_x = np.squeeze(pions_x)
+
+x = np.concatenate((electrons_x,pions_x),axis=0)
+
+y = np.concatenate((electrons_y,pions_y),axis=None)
+
 x.shape = (x.shape[0],x.shape[1],x.shape[2],1)
 
 #from sklearn.preprocessing import StandardScaler
@@ -166,7 +189,7 @@ plt.title('model accuracy')
 plt.ylabel('accuracy')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
-plt.savefig('/scratch/vljchr004/data/msc-hpc/round3/conv/round3_model5_history1.png', bbox_inches='tight')
+plt.savefig('/home/vljchr004/msc-hpc/round3/conv/round3_model5_history1.png', bbox_inches='tight')
 # summarize history for loss
 
 plt.close()
@@ -178,16 +201,16 @@ plt.title('model loss')
 plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
-plt.savefig('/scratch/vljchr004/data/msc-hpc/round3/conv/round3_model5_history2.png', bbox_inches='tight')
+plt.savefig('/home/vljchr004/msc-hpc/round3/conv/round3_model5_history2.png', bbox_inches='tight')
 
 model.probs = model.predict_proba(x_test)
 
 import numpy as np
-np.savetxt("/scratch/vljchr004/data/msc-hpc/round3/conv/round3_model5_results.csv", np.array(model.probs), fmt="%s")
+np.savetxt("/home/vljchr004/msc-hpc/round3/conv/round3_model5_results.csv", np.array(model.probs), fmt="%s")
 
-np.savetxt("/scratch/vljchr004/data/msc-hpc/round3/conv/round3_model5_y_test.csv", np.array(y_test), fmt="%s")
+np.savetxt("/home/vljchr004/msc-hpc/round3/conv/round3_model5_y_test.csv", np.array(y_test), fmt="%s")
 
-model.save('/scratch/vljchr004/data/msc-hpc/round3/conv/round3_model5_.h5')  # creates a HDF5 file 'my_model.h5'
+model.save('/home/vljchr004/msc-hpc/round3/conv/round3_model5_.h5')  # creates a HDF5 file 'my_model.h5'
 del model
 
 print("<-----------------------------done------------------------------------------>")
