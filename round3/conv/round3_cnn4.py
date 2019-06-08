@@ -77,52 +77,52 @@ zeros = np.where(nz==0)
 x = np.delete(x,zeros,axis=0)
 y = np.delete(y,zeros)
 
-print("x shape before elctron pion sample fix")
-print(x.shape)
+#print("x shape before elctron pion sample fix")
+#print(x.shape)
 
-#oversample electrons
-
-elec = np.where(y==1)
-
-print("len(pion) before keeping only electron len")
-
-
-pion = np.where(y!=1)
-
-print(len(pion))
-
-pion = pion[0:len(elec)]
-
-print("len(pion) after keeping only electron len")
-
-print(len(pion))
-
-electrons_x = x[elec,:,:]
-
-electrons_y = y[elec]
-
-electrons_x = np.squeeze(electrons_x)
-
-print("electrons_x.shape")
-print(electrons_x.shape)
-
-pions_x = x[pion,:,:]
-
-pions_y = y[pion]
-
-pions_x = np.squeeze(pions_x)
-
-print("pions_x.shape")
-print(pions_x.shape)
-
-x = np.concatenate((electrons_x,pions_x),axis=0)
-
-y = np.concatenate((electrons_y,pions_y),axis=None)
+##oversample electrons
+#
+#elec = np.where(y==1)
+#
+#print("len(pion) before keeping only electron len")
+#
+#
+#pion = np.where(y!=1)
+#
+#print(len(pion))
+#
+#pion = pion[0:len(elec)]
+#
+#print("len(pion) after keeping only electron len")
+#
+#print(len(pion))
+#
+#electrons_x = x[elec,:,:]
+#
+#electrons_y = y[elec]
+#
+#electrons_x = np.squeeze(electrons_x)
+#
+#print("electrons_x.shape")
+#print(electrons_x.shape)
+#
+#pions_x = x[pion,:,:]
+#
+#pions_y = y[pion]
+#
+#pions_x = np.squeeze(pions_x)
+#
+#print("pions_x.shape")
+#print(pions_x.shape)
+#
+#x = np.concatenate((electrons_x,pions_x),axis=0)
+#
+#y = np.concatenate((electrons_y,pions_y),axis=None)
 
 x.shape = (x.shape[0],x.shape[1],x.shape[2],1)
-
-print("x.shape after sampling ")
-print(x.shape)
+#
+#print("x.shape after sampling ")
+#print(x.shape)
 
 #from sklearn.preprocessing import StandardScaler
 #
@@ -198,7 +198,7 @@ model.compile(loss='binary_crossentropy',
               optimizer=sgd,
               metrics=['accuracy'])
 
-batch_size=100000
+batch_size=1000000
     
 history=model.fit(x_train, y_train,
               batch_size=batch_size,
