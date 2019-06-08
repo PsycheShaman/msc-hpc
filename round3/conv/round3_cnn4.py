@@ -83,9 +83,19 @@ print(x.shape)
 #oversample electrons
 
 elec = np.where(y==1)
+
+print("len(pion) before keeping only electron len")
+
+
 pion = np.where(y!=1)
 
+print(len(pion))
+
 pion = pion[0:len(elec)]
+
+print("len(pion) after keeping only electron len")
+
+print(len(pion))
 
 electrons_x = x[elec,:,:]
 
