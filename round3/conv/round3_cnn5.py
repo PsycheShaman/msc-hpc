@@ -70,26 +70,26 @@ y = np.delete(y,zeros)
 
 #oversample electrons
 
-elec = np.where(y==1)
-pion = np.where(y!=1)
-
-electrons_x = x[elec,:,:]
-
-electrons_y = y[elec]
-
-electrons_x = np.squeeze(electrons_x)
-
-pion = pion[0:electrons_x.shape[0]]
-
-pions_x = x[pion,:,:]
-
-pions_y = y[pion]
-
-pions_x = np.squeeze(pions_x)
-
-x = np.concatenate((electrons_x,pions_x),axis=0)
-
-y = np.concatenate((electrons_y,pions_y),axis=None)
+#elec = np.where(y==1)
+#pion = np.where(y!=1)
+#
+#electrons_x = x[elec,:,:]
+#
+#electrons_y = y[elec]
+#
+#electrons_x = np.squeeze(electrons_x)
+#
+#pion = pion[0:electrons_x.shape[0]]
+#
+#pions_x = x[pion,:,:]
+#
+#pions_y = y[pion]
+#
+#pions_x = np.squeeze(pions_x)
+#
+#x = np.concatenate((electrons_x,pions_x),axis=0)
+#
+#y = np.concatenate((electrons_y,pions_y),axis=None)
 
 x.shape = (x.shape[0],x.shape[1],x.shape[2],1)
 
@@ -139,7 +139,7 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D
 
 
 #num_classes = 2
-epochs = 40
+epochs = 20
 
 model = Sequential()
 model.add(Conv2D(32, kernel_size=(3, 3),
@@ -149,22 +149,22 @@ model.add(Conv2D(64, (3, 3), activation='tanh'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Dropout(0.5))
 model.add(Flatten())
-model.add(Dense(64, activation='tanh'))
+model.add(Dense(128, activation='tanh'))
 model.add(Dropout(0.5))
-model.add(Dense(64, activation='hard_sigmoid'))
+model.add(Dense(128, activation='hard_sigmoid'))
 model.add(Dropout(0.5))
-model.add(Dense(64, activation='hard_sigmoid'))
+model.add(Dense(128, activation='hard_sigmoid'))
 model.add(Dropout(0.5))
-model.add(Dense(64, activation='hard_sigmoid'))
+model.add(Dense(128, activation='hard_sigmoid'))
 model.add(Dropout(0.5))
-model.add(Dense(64, activation='hard_sigmoid'))
+model.add(Dense(128, activation='hard_sigmoid'))
 model.add(Dropout(0.5))
 model.add(Dense(2, activation='softmax'))
 
 # initiate RMSprop optimizer
 #opt = keras.optimizers.rmsprop(lr=0.0001, decay=1e-6)
 
-sgd = tensorflow.keras.optimizers.SGD(lr=0.001) 
+sgd = tensorflow.keras.optimizers.SGD(lr=0.01) 
 
 # Let's train the model using RMSprop
 model.compile(loss='binary_crossentropy',
