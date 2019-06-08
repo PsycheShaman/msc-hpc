@@ -198,7 +198,7 @@ model.compile(loss='binary_crossentropy',
               optimizer=sgd,
               metrics=['accuracy'])
 
-batch_size=1000000
+batch_size=10000
     
 history=model.fit(x_train, y_train,
               batch_size=batch_size,
