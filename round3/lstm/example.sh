@@ -41,4 +41,4 @@ module load software/TensorFlow-CPU-py3
 
 # Your science stuff goes here...
 
-python -u /home/vljchr004/msc-hpc/round3/lstm/round3_lstm1.py > out.txt
+python -u /home/vljchr004/msc-hpc/round3/lstm/round3_lstm2.py > out2.txt

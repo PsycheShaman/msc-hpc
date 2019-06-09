@@ -29,3 +29,11 @@ Epoch 10/20
 Epoch 11/20
  - 6988s - loss: 0.3386 - acc: 0.8938 - val_loss: 0.3381 - val_acc: 0.8940
 Epoch 12/20
+ - 6986s - loss: 0.3386 - acc: 0.8938 - val_loss: 0.3380 - val_acc: 0.8940
+Epoch 13/20
+ - 6985s - loss: 0.3386 - acc: 0.8938 - val_loss: 0.3381 - val_acc: 0.8940
+Epoch 14/20
+ - 6988s - loss: 0.3386 - acc: 0.8938 - val_loss: 0.3380 - val_acc: 0.8940
+Epoch 15/20
+ - 6989s - loss: 0.3385 - acc: 0.8938 - val_loss: 0.3380 - val_acc: 0.8940
+Epoch 16/20
