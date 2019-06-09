@@ -1,0 +1,6 @@
+2019-06-08 11:48:23.788948: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2019-06-08 11:48:25.482422: W tensorflow/core/framework/allocator.cc:122] Allocation of 42240000000 exceeds 10% of system memory.
+2019-06-08 11:49:30.180086: W tensorflow/core/framework/allocator.cc:122] Allocation of 66560000000 exceeds 10% of system memory.
+2019-06-08 11:53:22.521896: W tensorflow/core/framework/allocator.cc:122] Allocation of 58368000000 exceeds 10% of system memory.
+2019-06-08 11:59:21.072222: W tensorflow/core/framework/allocator.cc:122] Allocation of 58368000000 exceeds 10% of system memory.
+2019-06-08 12:01:42.608706: W tensorflow/core/framework/allocator.cc:122] Allocation of 66560000000 exceeds 10% of system memory.
