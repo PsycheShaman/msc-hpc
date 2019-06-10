@@ -128,20 +128,13 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D
 epochs = 100
 
 model = Sequential()
-model.add(Conv2D(32, (2, 2), padding='valid',input_shape=(17,24,1),data_format="channels_last"))
-model.add(Activation('relu'))
-model.add(Conv2D(64, kernel_size=(3, 3), activation='relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Dropout(0.5))
-model.add(Conv2D(128, kernel_size=(3, 3), activation='relu'))
-model.add(Conv2D(256, kernel_size=(3, 3), activation='relu'))
+model.add(Conv2D(32, (3, 3), padding='valid',input_shape=(17,24,1),data_format="channels_last"))
+model.add(Activation('hard_sigmoid'))
+model.add(Conv2D(64, kernel_size=(3, 3), activation='tanh'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Dropout(0.5))
 model.add(Flatten())
-model.add(Dense(512))
-model.add(Activation('relu'))
-model.add(Dropout(0.5))
-model.add(Dense(256))
+model.add(Dense(128))
 model.add(Activation('relu'))
 model.add(Dropout(0.5))
 model.add(Dense(128))
@@ -178,7 +171,7 @@ plt.title('model accuracy')
 plt.ylabel('accuracy')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
-plt.savefig('/home/vljchr004/msc-hpc/model2_history1.png', bbox_inches='tight')
+plt.savefig('/home/vljchr004/msc-hpc/model3_history1.png', bbox_inches='tight')
 # summarize history for loss
 
 plt.close()
@@ -190,16 +183,16 @@ plt.title('model loss')
 plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
-plt.savefig('/home/vljchr004/msc-hpc/model2_history2.png', bbox_inches='tight')
+plt.savefig('/home/vljchr004/msc-hpc/model3_history2.png', bbox_inches='tight')
 
 model.probs = model.predict_proba(x_test)
 
 import numpy as np
-np.savetxt("/home/vljchr004/msc-hpc/model2_results.csv", np.array(model.probs), fmt="%s")
+np.savetxt("/home/vljchr004/msc-hpc/model3_results.csv", np.array(model.probs), fmt="%s")
 
-np.savetxt("/home/vljchr004/msc-hpc/model2_y_test.csv", np.array(y_test), fmt="%s")
+np.savetxt("/home/vljchr004/msc-hpc/model3_y_test.csv", np.array(y_test), fmt="%s")
 
-model.save('/home/vljchr004/msc-hpc/model2_.h5')  # creates a HDF5 file 'my_model.h5'
+model.save('/home/vljchr004/msc-hpc/model3_.h5')  # creates a HDF5 file 'my_model.h5'
 del model
 
 print("<-----------------------------done------------------------------------------>")
