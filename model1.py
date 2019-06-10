@@ -96,7 +96,7 @@ pions = pions[0:electrons.shape[0]]
 x_1 = x[electrons,:,:,:]
 x_2 = x[pions,:,:,:]
 
-x = np.vstack((x_1,x_2),axis=0)
+x = np.vstack((x_1,x_2))
 
 y_1 = y[electrons]
 y_2 = y[pions]
