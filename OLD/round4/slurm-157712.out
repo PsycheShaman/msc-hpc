@@ -1,0 +1,21 @@
+2019-06-07 22:14:18.870285: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2019-06-07 22:14:20.795583: W tensorflow/core/framework/allocator.cc:122] Allocation of 42240000000 exceeds 10% of system memory.
+2019-06-07 22:15:56.200812: W tensorflow/core/framework/allocator.cc:122] Allocation of 66560000000 exceeds 10% of system memory.
+2019-06-07 22:40:57.778151: W tensorflow/core/framework/allocator.cc:122] Allocation of 30720000000 exceeds 10% of system memory.
+2019-06-07 22:40:57.778633: W tensorflow/core/framework/allocator.cc:122] Allocation of 66560000000 exceeds 10% of system memory.
+2019-06-07 22:44:13.204730: W tensorflow/core/framework/allocator.cc:122] Allocation of 42240000000 exceeds 10% of system memory.
+Traceback (most recent call last):
+  File "/home/vljchr004/msc-hpc/round4/round4_cnn6.py", line 152, in <module>
+    shuffle=True)#,
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/keras/engine/training.py", line 1639, in fit
+    validation_steps=validation_steps)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/keras/engine/training_arrays.py", line 215, in fit_loop
+    outs = f(ins_batch)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/keras/backend.py", line 2986, in __call__
+    run_metadata=self.run_metadata)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/client/session.py", line 1439, in __call__
+    run_metadata_ptr)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/errors_impl.py", line 528, in __exit__
+    c_api.TF_GetCode(self.status.status))
+tensorflow.python.framework.errors_impl.InvalidArgumentError: BiasGrad requires tensor size <= int32 max
+	 [[{{node training/SGD/gradients/conv2d_2/BiasAdd_grad/BiasAddGrad}} = BiasAddGrad[T=DT_FLOAT, data_format="NHWC", _device="/job:localhost/replica:0/task:0/device:CPU:0"](training/SGD/gradients/conv2d_2/Tanh_grad/TanhGrad)]]
