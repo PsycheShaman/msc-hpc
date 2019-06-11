@@ -8,11 +8,11 @@ import numpy as np
 
 print("imported glob, np........................................................................................")
 
-x_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/x_*.pkl")
-y_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/y_*.pkl")
+#x_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/x_*.pkl")
+#y_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/y_*.pkl")
 
-#x_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\x_*.pkl")
-#y_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\y_*.pkl")
+x_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\ff\\x_*.pkl")
+y_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\ff\\y_*.pkl")
 
 import pickle
 
@@ -38,27 +38,6 @@ print("recursively adding y pickles.............................................
 for i in y_files[1:]:
     with open(i,'rb') as y_file:
         yi = pickle.load(y_file)
-        y = np.concatenate((y,yi),axis=None)
-        
-x_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/x_*.npy")
-y_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/y_*.npy")
-
-#x_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\x_*.npy")
-#y_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\y_*.npy")
-       
-print("recursively adding x numpys........................................................................................")
-
-for i in x_files[0:]:
-    with open(i,'rb') as x_file:
-        print(i)
-        xi = np.load(x_file)
-        x = np.concatenate((x,xi),axis=0)
-
-print("recursively adding y numpys........................................................................................")
-
-for i in y_files[0:]:
-    with open(i,'rb') as y_file:
-        yi = np.load(y_file)
         y = np.concatenate((y,yi),axis=None)
         
 nz = np.array([np.count_nonzero(i) for i in x])
@@ -106,11 +85,13 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2,random_s
 from xgboost import XGBClassifier
 from sklearn.metrics import accuracy_score
 
-model = XGBClassifier(0)
+model = XGBClassifier(silent=False,
+                      objective='binary:logistic', 
+                      n_estimators=100)
 
 eval_set = [(x_train, y_train), (x_test, y_test)]
 eval_metric = ["auc","error"]
-model.fit(x_train, y_train, verbose=True)
+model.fit(x_train, y_train, eval_metric=eval_metric, eval_set=eval_set, verbose=True)
 	
 # make predictions for test data
 y_pred = model.predict_proba(x_test)
@@ -122,8 +103,8 @@ print("Accuracy: %.2f%%" % (accuracy * 100.0))
 
  	
 # save model to file
-pickle.dump(model, open("/home/vljchr004/msc-hpc/model10.pkl", "wb"))
+pickle.dump(model, open("C:/Users/gerhard/Documents/msc-hpc/model10.pkl", "wb"))
 
-np.savetxt("/home/vljchr004/msc-hpc/model10_preds.csv",y_pred,delimiter=", ")
-np.savetxt("/home/vljchr004/msc-hpc/model10_y_test.csv",y_test,delimiter=", ")
+np.savetxt("C:/Users/gerhard/Documents/msc-hpc/model10_preds.csv",y_pred,delimiter=", ")
+np.savetxt("C:/Users/gerhard/Documents/msc-hpc/model10_y_test.csv",y_test,delimiter=", ")
 
