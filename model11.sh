@@ -15,7 +15,7 @@
 #SBATCH --time=70:00:00
 
 # A sensible name for your job, try to keep it short
-#SBATCH --job-name="CNN9"
+#SBATCH --job-name="CNN13"
 
 #Modify the lines below for email alerts. Valid type values are NONE, BEGIN, END, FAIL, REQUEUE, ALL
 #SBATCH --mail-user=vljchr004@myuct.ac.za

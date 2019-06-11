@@ -55,7 +55,7 @@ x = x-mu
 
 x=x/sd
 
-x.shape = (x.shape[0],x.shape[1]*x.shape[2])
+#x.shape = (x.shape[0],x.shape[1]*x.shape[2])
 
 electrons = np.where(y==1)
 
@@ -95,7 +95,7 @@ model.fit(x_train, y_train, eval_metric=eval_metric, eval_set=eval_set, verbose=
 	
 # make predictions for test data
 y_pred = model.predict_proba(x_test)
-predictions = [round(value) for value in y_pred]
+predictions = [round(value) for value in y_pred[:,1]]
 
 # evaluate predictions
 accuracy = accuracy_score(y_test, predictions)
