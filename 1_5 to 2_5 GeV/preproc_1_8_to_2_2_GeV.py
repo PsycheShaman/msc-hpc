@@ -1,5 +1,6 @@
-for run in ('265332','265334','265335','265336','265338','265339','265342','265343'\
-            '265344','265377','265378','265381','265383','265385','265388'):
+#for run in ('265332','265334','265335','265336','265338','265339','265342')
+
+for run in ('265343','265344','265377','265378','265381','265383','265385','265388'):
 
 
     print("==============================================================================================")
@@ -76,7 +77,7 @@ for run in ('265332','265334','265335','265336','265338','265339','265342','2653
     
     layer0 = [file_reader2(i,"layer 0") for i in files_in_order]
     
-    layer0 = np.array([item for sublist in layer0 for item in sublist if sublist is not None])
+    layer0 = np.array([item for sublist in layer0 for item in sublist])
     
     pdgCode0 = np.array([item for sublist in pdgCode0 for item in sublist])
     
@@ -125,7 +126,7 @@ for run in ('265332','265334','265335','265336','265338','265339','265342','2653
     pdgCode2 = [file_reader1(i) for i in files_in_order]
     P2 = [file_reader3(i) for i in files_in_order]
     
-    layer2 = np.array([item for sublist in layer2 for item in sublist if sublist is not None])
+    layer2 = np.array([item for sublist in layer2 for item in sublist])
     
     pdgCode2 = np.array([item for sublist in pdgCode2 for item in sublist])
     P2 = np.array([item for sublist in P2 for item in sublist])
@@ -147,7 +148,7 @@ for run in ('265332','265334','265335','265336','265338','265339','265342','2653
     pdgCode3 = [file_reader1(i) for i in files_in_order]
     P3 = [file_reader3(i) for i in files_in_order]
     
-    layer3 = np.array([item for sublist in layer3 for item in sublist if sublist is not None])
+    layer3 = np.array([item for sublist in layer3 for item in sublist])
     
     pdgCode3 = np.array([item for sublist in pdgCode3 for item in sublist])
     P3 = np.array([item for sublist in P3 for item in sublist])
@@ -169,7 +170,7 @@ for run in ('265332','265334','265335','265336','265338','265339','265342','2653
     pdgCode4 = [file_reader1(i) for i in files_in_order]
     P4 = [file_reader3(i) for i in files_in_order]
     
-    layer4 = np.array([item for sublist in layer4 for item in sublist if sublist is not None])
+    layer4 = np.array([item for sublist in layer4 for item in sublist])
     
     pdgCode4 = np.array([item for sublist in pdgCode4 for item in sublist])
     P4 = np.array([item for sublist in P4 for item in sublist])
@@ -191,7 +192,7 @@ for run in ('265332','265334','265335','265336','265338','265339','265342','2653
     pdgCode5 = [file_reader1(i) for i in files_in_order]
     P5 = [file_reader3(i) for i in files_in_order]
     
-    layer5 = np.array([item for sublist in layer5 for item in sublist if sublist is not None])
+    layer5 = np.array([item for sublist in layer5 for item in sublist])
     
     pdgCode5 = np.array([item for sublist in pdgCode5 for item in sublist])
     P5 = np.array([item for sublist in P5 for item in sublist])
