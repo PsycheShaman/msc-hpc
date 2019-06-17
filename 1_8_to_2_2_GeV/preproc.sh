@@ -44,4 +44,4 @@ module load python/anaconda-python-3.7
 
 # Your science stuff goes here...
 
-python -u /home/vljchr004/msc-hpc/1_5 to 2_5 GeV/preproc.py > out_preproc.txt
+python -u /home/vljchr004/msc-hpc/1_8_to_2_2_GeV/preproc.py > out_preproc.txt
