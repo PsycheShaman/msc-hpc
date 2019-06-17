@@ -238,13 +238,13 @@ for run in ('265343','265344','265377','265378','265381','265383','265385','2653
     #with open('/scratch/vljchr004/data/msc-thesis-data/ff/x_' + run + '.pkl', 'wb') as x_file:
     #  pickle.dump(x, x_file)
     
-    with open('C:/Users/gerhard/Documents/msc-thesis-data/1_8_to_2_2_GeV/P_' + run + '.pkl', 'wb') as P_file:
+    with open('/scratch/vljchr004/data/msc-thesis-data/1_8_to_2_2_GeV/P_' + run + '.pkl', 'wb') as P_file:
       pickle.dump(P, P_file)
     
-    with open('C:/Users/gerhard/Documents/msc-thesis-data/1_8_to_2_2_GeV/x_' + run + '.pkl', 'wb') as x_file:
+    with open('/scratch/vljchr004/data/msc-thesis-data/1_8_to_2_2_GeV/x_' + run + '.pkl', 'wb') as x_file:
       pickle.dump(x, x_file)
       
-    with open('C:/Users/gerhard/Documents/msc-thesis-data/1_8_to_2_2_GeV/y_' + run + '.pkl', 'wb') as y_file:
+    with open('/scratch/vljchr004/data/msc-thesis-data/1_8_to_2_2_GeV/y_' + run + '.pkl', 'wb') as y_file:
       pickle.dump(y, y_file)
 
 
