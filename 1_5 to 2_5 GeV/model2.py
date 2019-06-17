@@ -138,11 +138,11 @@ from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, LSTM
 
 model = Sequential()
-model.add(LSTM(128,input_shape=(24,17),return_sequences=True))
-model.add(LSTM(128,return_sequences=True,go_backwards=True))
-model.add(LSTM(128,return_sequences=False,go_backwards=False))
-model.add(Dense(128,activation="tanh"))
-model.add(Dense(128,activation="tanh"))
+model.add(LSTM(256,input_shape=(24,17),return_sequences=True))
+model.add(LSTM(256,return_sequences=False,go_backwards=True))
+#model.add(LSTM(128,return_sequences=False,go_backwards=False))
+model.add(Dense(256,activation="tanh"))
+model.add(Dense(256,activation="tanh"))
 model.add(Dense(2,activation="softmax"))
 
 sgd = tensorflow.keras.optimizers.SGD(lr=0.01,momentum=0.9) 
@@ -172,7 +172,7 @@ plt.title('model accuracy')
 plt.ylabel('accuracy')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
-plt.savefig('/home/vljchr004/msc-hpc/model1_history1.png', bbox_inches='tight')
+plt.savefig('/home/vljchr004/msc-hpc/model2_history1.png', bbox_inches='tight')
 # summarize history for loss
 
 plt.close()
@@ -184,16 +184,16 @@ plt.title('model loss')
 plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
-plt.savefig('/home/vljchr004/msc-hpc/model1_history2.png', bbox_inches='tight')
+plt.savefig('/home/vljchr004/msc-hpc/model2_history2.png', bbox_inches='tight')
 
 model.probs = model.predict_proba(x_test)
 
 import numpy as np
-np.savetxt("/home/vljchr004/msc-hpc/model1_results.csv", np.array(model.probs), fmt="%s")
+np.savetxt("/home/vljchr004/msc-hpc/model2_results.csv", np.array(model.probs), fmt="%s")
 
-np.savetxt("/home/vljchr004/msc-hpc/model1_y_test.csv", np.array(y_test), fmt="%s")
+np.savetxt("/home/vljchr004/msc-hpc/model2_y_test.csv", np.array(y_test), fmt="%s")
 
-model.save('/home/vljchr004/msc-hpc/model1_.h5')  # creates a HDF5 file 'my_model.h5'
+model.save('/home/vljchr004/msc-hpc/model2_.h5')  # creates a HDF5 file 'my_model.h5'
 del model
 
 print("<-----------------------------done------------------------------------------>")
