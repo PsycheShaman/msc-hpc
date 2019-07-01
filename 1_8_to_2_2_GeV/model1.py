@@ -9,13 +9,13 @@ import glob
 
 import numpy as np
 
-P_files = glob.glob("C:/Users/gerhard/Documents/msc-thesis-data/P_*.pkl", recursive=True)
+#P_files = glob.glob("C:/Users/gerhard/Documents/msc-thesis-data/P_*.pkl", recursive=True)
 
 x_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/x_*.pkl")
 y_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/y_*.pkl")
 
-x_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\x_*.pkl")
-y_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\y_*.pkl")
+#x_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\x_*.pkl")
+#y_files = glob.glob("C:\\Users\\gerhard\\Documents\\msc-thesis-data\\cnn\\y_*.pkl")
 
 import pickle
 
@@ -29,8 +29,8 @@ print("loading first y pickle...................................................
 with open(y_files[0], 'rb') as y_file0:
    y = pickle.load(y_file0)
 
-with open(P_files[0], 'rb') as P_file0:
-   P = pickle.load(P_file0)
+#with open(P_files[0], 'rb') as P_file0:
+#   P = pickle.load(P_file0)
    
 print("recursively adding x pickles........................................................................................")
 
@@ -47,10 +47,10 @@ for i in y_files[1:]:
         yi = pickle.load(y_file)
         y = np.concatenate((y,yi),axis=None)
         
-for i in P_files[1:]:
-    with open(i,'rb') as P_file:
-        Pi = pickle.load(P_file)
-        P = np.concatenate((P,Pi),axis=None)
+#for i in P_files[1:]:
+#    with open(i,'rb') as P_file:
+#        Pi = pickle.load(P_file)
+#        P = np.concatenate((P,Pi),axis=None)
         
 x_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/x_*.npy")
 y_files = glob.glob("/scratch/vljchr004/data/msc-thesis-data/cnn/y_*.npy")
@@ -76,7 +76,7 @@ zeros = np.where(nz==0)
 
 x = np.delete(x,zeros,axis=0)
 y = np.delete(y,zeros)
-P = np.delete(P,zeros)
+#P = np.delete(P,zeros)
 
 #x.shape = (x.shape[0],x.shape[1],x.shape[2],1)
 

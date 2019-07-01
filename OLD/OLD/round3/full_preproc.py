@@ -14,11 +14,11 @@ import glob
 
 print("imported glob........................................................................................")
 
-#run = '000265309'
+run = '000265309'
 
-files_in_order = glob.glob("/scratch/vljchr004/data/msc-thesis-data/unprocessed/" + run + '/**/*.txt', recursive=True)
+#files_in_order = glob.glob("/scratch/vljchr004/data/msc-thesis-data/unprocessed/" + run + '/**/*.txt', recursive=True)
 
-#files_in_order = glob.glob("C:/Users/gerhard/Documents/data/msc-thesis-data/unprocessed/" + run + '/**/*.txt', recursive=True)
+files_in_order = glob.glob("C:/Users/gerhard/Documents/data/msc-thesis-data/unprocessed/" + run + '/**/*.txt', recursive=True)
 
 #a = list(range(1,len(files)-1))
 #
